@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="從長照 3.0 資源佈局到失智症管理：長照資源導航、輔具補助試算、失智預防與生活化照護。講師：鍾孟修 職能治療師">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>長照 3.0 與失智照護講座</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap">
+<style>
+/* Layout: one full-screen slide at a time, a "care strategy map" look — pine green for routes/resources, amber for warnings and key numbers; bottom control bar sized for thumbs. */
+:root{
+  --bg:#F7FBFA; --surface:#FFFFFF; --ink:#1A2B27; --muted:#5A6D67; --line:#DCE8E4;
+  --pine:#12896B; --pine-soft:#E2F5EF; --amber:#C27C00; --amber-soft:#FFF3D6; --alert:#C2452B; --alert-soft:#FDE8E3;
+  color-scheme:light;
+  --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --bar-h:64px;
+  --fs-hero:clamp(2rem,4.6vw + .4rem,4.4rem);
+  --fs-h:clamp(1.55rem,2.6vw + .5rem,2.9rem);
+  --fs-lead:clamp(1.02rem,.9vw + .7rem,1.4rem);
+  --fs-body:clamp(.95rem,.55vw + .72rem,1.18rem);
+  --fs-small:clamp(.78rem,.3vw + .66rem,.92rem);
+}
+
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--fs-body);line-height:1.65;overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
+
+/* progress line */
+.progress{position:fixed;left:0;right:0;top:0;height:3px;background:var(--line);z-index:30}
+.progress i{display:block;height:100%;background:var(--pine);width:0;transition:width .35s ease}
+
+/* deck */
+.deck{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));overflow:hidden;touch-action:pan-y}
+.slide{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  visibility:hidden;opacity:0;transform:translateX(40px);transition:opacity .35s ease,transform .35s ease,visibility 0s .35s}
+.slide.is-active{visibility:visible;opacity:1;transform:none;transition:opacity .35s ease,transform .35s ease}
+.slide.is-before{transform:translateX(-40px)}
+@media (prefers-reduced-motion: reduce){.slide,.slide.is-active,.progress i{transition:none}}
+.inner{box-sizing:border-box;min-height:100%;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vh,28px);
+  padding-block:clamp(22px,5vh,56px);padding-left:max(16px,env(safe-area-inset-left,0px),4vw);padding-right:max(16px,env(safe-area-inset-right,0px),4vw)}
+
+/* type */
+.eyebrow{font-family:var(--f-data);font-size:var(--fs-small);letter-spacing:.08em;color:var(--pine);display:flex;gap:.6em;align-items:center;flex-wrap:wrap}
+.eyebrow b{background:var(--pine);color:var(--bg);padding:.1em .55em;border-radius:4px;font-weight:600}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-family:var(--f-display);font-weight:900;font-size:var(--fs-hero);line-height:1.18;letter-spacing:.01em}
+h2{font-family:var(--f-display);font-weight:900;font-size:var(--fs-h);line-height:1.25}
+h3{font-size:calc(var(--fs-body) * 1.08);font-weight:700;line-height:1.4}
+p{margin:0}
+.lead{font-size:var(--fs-lead);color:var(--muted);max-width:42em}
+.small{font-size:var(--fs-small);color:var(--muted)}
+.hl{color:var(--pine)} .am{color:var(--amber)}
+.num{font-family:var(--f-data);font-variant-numeric:tabular-nums}
+ul.clean{list-style:none;margin:0;padding:0;display:grid;gap:.5em}
+ul.clean li{padding-left:1.1em;position:relative}
+ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.45em;height:.45em;border-radius:50%;background:var(--pine)}
+
+/* grids */
+.grid{display:grid;gap:clamp(12px,1.6vw,22px)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:1fr}}
+@media (max-width:620px){.g2,.g4{grid-template-columns:1fr}}
+.grid>*{min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(14px,1.6vw,22px);display:flex;flex-direction:column;gap:.5em}
+.tag{display:inline-block;font-family:var(--f-data);font-size:var(--fs-small);padding:.05em .55em;border-radius:4px;background:var(--pine-soft);color:var(--pine);font-weight:600;align-self:flex-start}
+.tag.am{background:var(--amber-soft);color:var(--amber)}
+.tag.al{background:var(--alert-soft);color:var(--alert)}
+.note{border-left:4px solid var(--amber);background:var(--amber-soft);padding:.7em 1em;border-radius:0 10px 10px 0;font-size:var(--fs-small);color:var(--ink)}
+
+/* cover */
+.cover-meta{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:var(--fs-body)}
+.cover-meta div{display:flex;flex-direction:column}
+.cover-meta span{font-family:var(--f-data);font-size:var(--fs-small);color:var(--muted);letter-spacing:.06em}
+.route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.route .stop{background:var(--surface);border:1.5px solid var(--pine);color:var(--pine);border-radius:999px;padding:.3em .9em;font-weight:700;font-size:var(--fs-small)}
+.route .dash{flex:0 0 24px;height:0;border-top:2px dashed var(--pine);opacity:.6}
+
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(60,minmax(0,1fr));gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.tl a{display:flex;flex-direction:column;gap:.3em;padding:14px;text-decoration:none;color:var(--ink);background:var(--surface);border-right:1px solid var(--line);min-width:0;cursor:pointer}
+.tl a:last-child{border-right:0}
+.tl a:hover{background:var(--pine-soft)}
+.tl .t{font-family:var(--f-data);font-size:var(--fs-small);color:var(--pine);font-weight:600}
+.tl .bar{height:6px;border-radius:3px;background:var(--pine)}
+.tl a:nth-child(4) .bar{background:var(--amber)}
+@media (max-width:760px){.tl{grid-template-columns:1fr}.tl a{grid-column:auto!important;border-right:0;border-bottom:1px solid var(--line)}}
+
+/* big stats */
+.stat{display:flex;flex-direction:column;gap:.35em}
+.stat .v{font-family:var(--f-display);font-weight:900;font-size:clamp(2.1rem,3.6vw,3.4rem);line-height:1;color:var(--pine)}
+.stat .v small{font-size:.42em;font-family:var(--f-body);font-weight:700;margin-left:.15em}
+.stat.am .v{color:var(--amber)}
+
+/* range chart */
+.rchart{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(14px,2vw,26px);display:grid;gap:14px}
+.rrow{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr);gap:12px;align-items:center}
+.rrow .lab{font-weight:700;font-size:var(--fs-small)}
+.rrow .lab em{display:block;font-style:normal;font-weight:400;color:var(--muted)}
+.track{position:relative;height:30px;background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/calc(100%/6) 100%;border-right:1px solid var(--line)}
+.track .r{position:absolute;top:5px;height:20px;border-radius:5px;background:var(--pine)}
+.track .r.am{background:var(--amber)}
+.track .r span{position:absolute;left:calc(100% + 6px);top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--f-data);font-size:var(--fs-small);color:var(--ink)}
+.track .r.flip span{left:auto;right:calc(100% + 6px)}
+.axis{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr);gap:12px}
+.axis div{display:flex;justify-content:space-between;font-family:var(--f-data);font-size:var(--fs-small);color:var(--muted)}
+@media (max-width:620px){.rrow,.axis{grid-template-columns:1fr}.axis>span{display:none}}
+
+/* compare table */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:var(--fs-small)}
+.cmp th,.cmp td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.cmp thead th{font-family:var(--f-data);letter-spacing:.05em;color:var(--muted);font-weight:600}
+.cmp thead th:last-child{color:var(--pine)}
+.cmp td:first-child{font-weight:700;white-space:nowrap}
+.cmp td:last-child{background:var(--pine-soft)}
+.cmp tr:last-child td{border-bottom:0}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:s}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.steps .card{position:relative}
+.steps .n{font-family:var(--f-data);font-weight:600;color:var(--bg);background:var(--pine);width:2em;height:2em;border-radius:50%;display:grid;place-items:center;font-size:var(--fs-small)}
+.big-phone{font-family:var(--f-display);font-weight:900;font-size:clamp(2.6rem,6vw,4.6rem);color:var(--pine);line-height:1}
+
+/* calculator */
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:.45em .8em;min-width:3em;min-height:44px;cursor:pointer;font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--bg)}
+.calc-out{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.calc-out{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.calc-out{grid-template-columns:1fr}}
+.calc-out .card .v{font-family:var(--f-data);font-size:clamp(1.35rem,2vw,1.8rem);font-weight:600;color:var(--pine);font-variant-numeric:tabular-nums;line-height:1.2}
+.calc-out .card .pay{font-size:var(--fs-small);color:var(--muted)}
+.calc-out .card .pay b{color:var(--amber);font-family:var(--f-data)}
+
+/* checklist */
+.chk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:700px){.chk{grid-template-columns:1fr}}
+.chk button{display:flex;gap:.7em;align-items:flex-start;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:.65em .8em;cursor:pointer;min-height:48px;font-size:var(--fs-small);line-height:1.5}
+.chk button .box{flex:0 0 1.4em;height:1.4em;border-radius:6px;border:2px solid var(--muted);display:grid;place-items:center;font-weight:700;color:var(--bg);margin-top:.05em}
+.chk button[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft)}
+.chk button[aria-pressed="true"] .box{background:var(--amber);border-color:var(--amber)}
+.chk button[aria-pressed="true"] .box::after{content:"✓"}
+.chk em{display:block;font-style:normal;color:var(--muted)}
+.result{font-weight:700;padding:.6em 1em;border-radius:10px;background:var(--pine-soft);color:var(--pine)}
+.result.warn{background:var(--amber-soft);color:var(--amber)}
+
+/* stopwatch */
+.watch{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.watch .time{font-family:var(--f-data);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:600;font-variant-numeric:tabular-nums;line-height:1;min-width:4.2ch}
+.btn{border:0;background:var(--pine);color:var(--bg);border-radius:12px;padding:.6em 1.2em;min-height:48px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+/* flip cards */
+.flip{cursor:pointer;text-align:left;border:1px solid var(--line)}
+.flip .back{display:none}
+.flip[aria-pressed="true"]{border-color:var(--pine);background:var(--pine-soft)}
+.flip[aria-pressed="true"] .front-hint{display:none}
+.flip[aria-pressed="true"] .back{display:grid;gap:.3em}
+.front-hint{font-size:var(--fs-small);color:var(--pine);font-weight:700}
+.lvl{display:grid;grid-template-columns:auto 1fr;gap:.2em .6em;font-size:var(--fs-small)}
+.lvl b{font-family:var(--f-data)}
+
+/* quiz */
+.quote{font-family:var(--f-display);font-weight:900;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.3}
+.opts{display:grid;gap:8px}
+.opts button{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:.75em 1em;cursor:pointer;min-height:48px}
+.opts button.ok{border-color:var(--pine);background:var(--pine-soft)}
+.opts button.no{border-color:var(--alert);background:var(--alert-soft)}
+.fb{min-height:3.2em}
+
+/* hotline */
+.hot{display:flex;flex-direction:column;gap:.35em}
+.hot .tel{font-family:var(--f-data);font-size:clamp(1.3rem,2vw,1.7rem);font-weight:600;color:var(--pine);user-select:all}
+.copy{align-self:flex-start;border:1.5px solid var(--line);background:transparent;border-radius:8px;padding:.25em .7em;cursor:pointer;font-size:var(--fs-small);min-height:36px}
+
+/* faq */
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.2em 1em}
+details+details{margin-top:8px}
+summary{cursor:pointer;font-weight:700;padding:.7em 0;list-style:none;display:flex;justify-content:space-between;gap:1em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-data);color:var(--pine);font-size:1.2em}
+details[open] summary::after{content:"−"}
+details p{padding:0 0 .9em;color:var(--muted)}
+
+/* section divider */
+.divider .secnum{font-family:var(--f-data);font-size:clamp(3.5rem,10vw,8rem);font-weight:600;color:var(--pine);opacity:.18;line-height:1}
+.divider .clock{font-family:var(--f-data);color:var(--amber);font-weight:600}
+
+/* bottom bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:1px solid var(--line);
+  height:var(--bar-h);padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px));
+  display:flex;align-items:center;gap:8px;box-sizing:content-box}
+.bar .nav{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
+.bar .nav.next{background:var(--pine);border-color:var(--pine);color:var(--bg)}
+.bar .nav:disabled{opacity:.35;cursor:default}
+.bar .mid{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border:0;background:transparent;height:48px;border-radius:10px}
+.bar .mid:hover{background:var(--bg)}
+.bar .sec{font-size:var(--fs-small);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.bar .cnt{font-family:var(--f-data);font-size:.78rem;color:var(--muted)}
+.bar .tool{height:44px;border-radius:10px;border:1.5px solid var(--line);background:transparent;cursor:pointer;padding:0 .7em;display:flex;align-items:center;gap:.4em;font-family:var(--f-data);font-size:.85rem;flex:0 0 auto}
+.bar .tool.late{border-color:var(--amber);color:var(--amber)}
+@media (max-width:620px){.bar .hide-m{display:none}}
+svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* overview */
+.ov{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto;
+  padding-block:calc(20px + env(safe-area-inset-top,0px)) calc(20px + env(safe-area-inset-bottom,0px));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ov-head{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:1200px;margin:0 auto 16px}
+.ov-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.ov-grid button{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:4px;min-height:84px}
+.ov-grid button.cur{border-color:var(--pine);background:var(--pine-soft)}
+.ov-grid .k{font-family:var(--f-data);font-size:.78rem;color:var(--muted)}
+.ov-grid .t{font-weight:700;line-height:1.4}
+.toast{position:fixed;left:50%;bottom:calc(var(--bar-h) + 16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.5em 1em;border-radius:10px;font-size:var(--fs-small);z-index:60}
+.hint{font-size:var(--fs-small);color:var(--muted);display:flex;gap:1em;flex-wrap:wrap}
+/* speaker */
+.speaker{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,52px);align-items:center}
+@media (max-width:760px){.speaker{grid-template-columns:1fr}}
+.photo{position:relative;width:100%;max-width:420px;aspect-ratio:1;border-radius:24px;overflow:hidden;background:var(--pine-soft);justify-self:center;box-shadow:0 20px 44px -26px rgba(18,60,50,.5)}
+.photo img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.photo .mono{position:absolute;inset:0;display:grid;place-items:center;font:900 clamp(3rem,8vw,6rem)/1 var(--f-display);color:var(--pine)}
+.sp-body{display:flex;flex-direction:column;gap:16px;min-width:0}
+.sp-title{font-size:.55em;color:var(--muted);font-weight:700}
+.roles{list-style:none;margin:0;padding:0;display:grid;gap:.45em;font-size:var(--fs-lead)}
+.roles li{padding-left:.9em;border-left:3px solid var(--pine)}
+.sp-tags{display:flex;flex-wrap:wrap;gap:6px}
+.fb{display:flex;gap:16px;align-items:center;background:var(--surface);border:2px solid var(--amber);border-radius:18px;padding:14px 18px;text-decoration:none;color:var(--ink);transition:background .2s}
+.fb:hover{background:var(--amber-soft)}
+.fb .f{width:56px;height:56px;border-radius:14px;background:#1877F2;color:#FFFFFF;display:grid;place-items:center;font:900 32px/1 var(--f-body);flex:none}
+.fb-tx{min-width:0;flex:1}
+.fb-tx b{font-size:calc(var(--fs-body) * 1.1)}
+.fb-tx p{font-size:var(--fs-small);color:var(--muted)}
+.fb .go{flex:none;font-weight:700;color:#FFFFFF;background:var(--amber);padding:.6em .9em;border-radius:12px;white-space:nowrap}
+@media (max-width:620px){.fb{flex-wrap:wrap}.fb .go{width:100%;text-align:center}}
+.fb .qr{flex:none;width:112px;height:112px;padding:6px;background:#FFFFFF;border-radius:10px;border:1px solid var(--line)}
+.qr img,.qr canvas{width:100%!important;height:100%!important;display:block;image-rendering:pixelated}
+@media (max-width:620px){.fb .qr{display:none}}
+.deck-link{border-color:var(--pine);max-width:640px}
+.deck-link:hover{background:var(--pine-soft)}
+.deck-link .num{color:var(--pine);font-size:.85rem;word-break:break-all}
+.follow{display:grid;gap:12px}
+.links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.links{grid-template-columns:1fr}}
+.rl{position:relative;display:flex;flex-direction:column;gap:2px;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:.7em 2.2em .7em 1em;text-decoration:none;color:var(--ink)}
+.rl:hover{border-color:var(--pine);background:var(--pine-soft)}
+.rl span{font-size:var(--fs-small);color:var(--muted)}
+.rl i{position:absolute;right:.9em;top:50%;transform:translateY(-50%);font-style:normal;color:var(--pine);font-weight:700}
+
+/* dementia prevention */
+.dz-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:var(--fs-small)}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.lg::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--c)}
+.lg.e,.dzb.e{--c:#7A8F3A} .lg.m,.dzb.m{--c:var(--pine)} .lg.l,.dzb.l{--c:var(--amber)}
+.dz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px}
+@media (max-width:760px){.dz{grid-template-columns:1fr}}
+.dzb{display:grid;grid-template-columns:1.6em minmax(0,7.5em) minmax(0,1fr) 2.6em;gap:8px;align-items:center;background:transparent;border:1.5px solid transparent;border-radius:10px;padding:5px 8px;cursor:pointer;text-align:left;font-size:var(--fs-small)}
+.dzb:hover,.dzb[aria-pressed="true"]{border-color:var(--c);background:var(--surface)}
+.dzb .r{font-family:var(--f-data);color:var(--muted)}
+.dzb .n{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dzb .b{height:14px;border-radius:3px;background:var(--line);overflow:hidden}
+.dzb .b i{display:block;height:100%;background:var(--c)}
+.dzb .p{font-family:var(--f-data);font-weight:600;text-align:right}
+.rx{display:flex;flex-wrap:wrap;gap:6px}
+.rx span{background:var(--pine-soft);color:var(--pine);border-radius:8px;padding:.25em .65em;font-size:var(--fs-small)}
+.rx b{font-size:1.2em}
+/* icope */
+.icope{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.icope{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.icope{grid-template-columns:1fr}}
+.ic{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer}
+.ic .ich{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ic h3{margin:0}
+.ic .st{font-size:var(--fs-small);font-weight:700;color:var(--pine);background:var(--pine-soft);border-radius:999px;padding:.1em .6em;white-space:nowrap}
+.ic .q{font-size:var(--fs-small)}
+.ic .act{font-size:var(--fs-small);color:var(--muted);display:none}
+.ic[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft)}
+.ic[aria-pressed="true"] .st{color:var(--surface);background:var(--amber)}
+.ic[aria-pressed="true"] .act{display:block}
+
+/* assistive calc */
+.formula{background:var(--pine-soft);border-radius:10px;padding:.7em 1em;font-size:var(--fs-small);line-height:1.8}
+.fld{display:grid;gap:4px}
+.fld label{font-size:var(--fs-small);color:var(--muted)}
+.fld input{font:600 1.2rem var(--f-data);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:.5em .7em;min-height:44px;width:100%;box-sizing:border-box}
+.fld input:focus{border-color:var(--pine);outline:none}
+.split{display:flex;height:22px;border-radius:6px;overflow:hidden;background:var(--line)}
+.split .sub{background:var(--pine)} .split .self{background:var(--amber)}
+.at-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.at-out div{display:flex;flex-direction:column}
+.at-out b{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600}
+@media (max-width:480px){.at-out{grid-template-columns:1fr}}
+.cmp.two td:last-child{background:var(--pine-soft)}
+
+/* research ranking */
+.rank{display:grid;gap:10px}
+.rk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.rk .no{width:2em;height:2em;border-radius:50%;display:grid;place-items:center;background:var(--pine);color:var(--surface);font-family:var(--f-data);font-weight:600}
+.rk-main{display:grid;gap:4px;min-width:0}
+.rk-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.rk-head .pct{color:var(--pine);font-weight:600;white-space:nowrap}
+.rk-bar{height:8px;border-radius:4px;background:var(--pine-soft)}
+.rk-bar i{display:block;height:100%;border-radius:4px;background:var(--pine)}
+
+/* warm-up quiz */
+.qz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.qz.q3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:620px){.qz,.qz.q3{grid-template-columns:1fr}}
+.qopt{display:flex;align-items:center;gap:.7em;text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.9em 1.1em;min-height:64px;cursor:pointer;
+  font-family:var(--f-display);font-weight:900;font-size:clamp(1.25rem,2.2vw,1.9rem);transition:border-color .2s,background .2s}
+.qopt:hover{border-color:var(--pine)}
+.qopt .qk{flex:0 0 auto;width:1.7em;height:1.7em;border-radius:50%;display:grid;place-items:center;background:var(--pine-soft);color:var(--pine);font-family:var(--f-data);font-size:.6em}
+.qopt.right{border-color:var(--pine);background:var(--pine-soft)}
+.qopt.right .qk{background:var(--pine);color:var(--surface)}
+.qopt.wrong{border-color:var(--alert);background:var(--alert-soft)}
+.qopt.dim{opacity:.5}
+.qopt .why{display:block;font-family:var(--f-body);font-weight:500;font-size:.5em;color:var(--muted)}
+.qz.done .qopt{cursor:default}
+.ans{display:grid;gap:14px;animation:pop .35s ease}
+@keyframes pop{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.ans{animation:none}}
+.more{justify-self:start}
+.mini{display:grid;gap:8px}
+.mrow{display:grid;grid-template-columns:3.2em minmax(0,1fr) 4em;gap:8px;align-items:center;font-family:var(--f-data);font-size:var(--fs-small)}
+.mrow i{display:block;height:18px;border-radius:4px;background:var(--pine-soft)}
+.mrow.now i{background:var(--pine)}
+.mrow.tw i{background:var(--amber)} .mrow.tw{color:var(--amber);font-weight:600}
+.mrow i{min-width:0}
+.mrow b{text-align:right;font-variant-numeric:tabular-nums}
+.chart-wrap{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(8px,1.5vw,18px);overflow-x:auto}
+svg.lc{display:block;width:100%;min-width:520px;height:auto}
+.lc .gridl line{stroke:var(--line);stroke-width:1}
+.lc text{font-family:var(--f-data);font-size:13px;fill:var(--muted)}
+.lc .ax text{text-anchor:end}
+.lc .axx text{text-anchor:middle}
+.lc .covid{fill:var(--amber-soft)}
+.lc .covid-t{fill:var(--amber);text-anchor:middle;font-size:12px}
+.lc polyline{fill:none;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round}
+.lc .l-f{stroke:var(--amber)} .lc .l-t{stroke:var(--pine)} .lc .l-m{stroke:var(--ink)}
+.lc .d-f{fill:var(--amber)} .lc .d-t{fill:var(--pine)} .lc .d-m{fill:var(--ink)}
+.lc .e-f{fill:var(--amber);font-weight:600;font-size:14px} .lc .e-t{fill:var(--pine);font-weight:600;font-size:14px} .lc .e-m{fill:var(--ink);font-weight:600;font-size:14px}
+.track.t14{background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/calc(100%/7) 100%}
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.eq>div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6em 1em;display:flex;flex-direction:column}
+.eq .num{font-family:var(--f-display);font-weight:900;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.1;color:var(--pine)}
+.eq em{font-style:normal;font-size:var(--fs-small);color:var(--muted)}
+.eq .res{background:var(--amber-soft);border-color:var(--amber)}
+.eq .res .num{color:var(--amber)}
+.eq .op{font-family:var(--f-data);font-size:2rem;color:var(--muted)}
+.hint kbd{font-family:var(--f-data);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 .35em;background:var(--surface)}
+@media (hover:none){.hint .kb{display:none}}
+@media (hover:hover){.hint .tc{display:none}}
+</style>
+
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+
+<main class="deck" id="deck" aria-live="polite">
+
+<!-- 1 Cover -->
+<section class="slide" data-sec="開場" data-end="10" data-title="封面">
+ <div class="inner">
+  <div class="eyebrow"><b>台灣捷邁</b> 企業健康講座 · 實體同步線上</div>
+  <h1>從長照 3.0 資源佈局<br>到<span class="hl">失智症管理</span></h1>
+  <p class="lead">給正在、或即將照顧爸媽的你：60 分鐘，拿到一張找資源的地圖，和一套在家就能做的照護方法。</p>
+  <div class="route" aria-label="今日路線">
+   <span class="stop">照護是馬拉松</span><span class="dash"></span>
+   <span class="stop">長照 3.0 導航</span><span class="dash"></span>
+   <span class="stop">生活化照護法</span><span class="dash"></span>
+   <span class="stop">Q&amp;A</span>
+  </div>
+  <div class="cover-meta">
+   <div><span>DATE</span>2026/10/29（四）16:00–17:00</div>
+   <div><span>PLACE</span>臺北市松山區光復北路 11 巷 35 號 7 樓</div>
+  </div>
+  <a class="fb deck-link" href="https://mattsue1003.github.io/ltc3-dementia-care-talk/" target="_blank" rel="noopener">
+   <div class="qr" data-qr="https://mattsue1003.github.io/ltc3-dementia-care-talk/" aria-hidden="true"></div>
+   <div class="fb-tx"><b>先掃這個，帶走整份簡報</b><p>試算、檢測、資源電話都能在手機上點開，也歡迎分享給家人。</p><p class="num">mattsue1003.github.io/ltc3-dementia-care-talk</p></div>
+  </a>
+  <p class="hint"><span class="kb">鍵盤 <kbd>←</kbd><kbd>→</kbd> 換頁 · <kbd>O</kbd> 目錄 · <kbd>F</kbd> 全螢幕</span><span class="tc">左右滑動換頁 · 點下方標題看目錄</span></p>
+ </div>
+</section>
+
+<!-- Speaker -->
+<section class="slide" data-sec="講師介紹" data-end="10" data-title="講師介紹">
+ <div class="inner">
+  <div class="speaker">
+   <div class="photo"><img src="img/speaker.jpg" alt="鍾孟修 職能治療師" onerror="this.remove()"><div class="mono">孟修</div></div>
+   <div class="sp-body">
+    <div class="eyebrow">講師介紹</div>
+    <h2>鍾孟修 <span class="sp-title">職能治療師</span></h2>
+    <ul class="roles">
+     <li>愛迪樂有限公司　執行長</li>
+     <li>愛迪樂居家職能治療所　所長</li>
+     <li>社團法人台灣生活復能健康促進協會　副理事長</li>
+     <li>中華高齡專業照護訓練協會　理事</li>
+    </ul>
+    <div class="sp-tags"><span class="tag">復能</span><span class="tag">健康促進</span><span class="tag">教學</span><span class="tag">AI</span><span class="tag">失智症復健</span><span class="tag">中風復健</span><span class="tag">體智能</span><span class="tag">運動</span><span class="tag">身障</span><span class="tag">長照</span></div>
+    <a class="fb" href="https://www.facebook.com/profile.php?id=100063748491881" target="_blank" rel="noopener">
+     <span class="f" aria-hidden="true">f</span>
+     <div class="fb-tx"><b>按讚・追蹤・分享臉書粉專</b><p>每天都有教案、專業文章分享，留言即可取得！</p></div>
+     <span class="go">前往粉專 ↗</span>
+    </a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 2 Agenda -->
+<section class="slide" data-sec="開場" data-end="10" data-title="今天的 60 分鐘">
+ <div class="inner">
+  <div class="eyebrow">AGENDA</div>
+  <h2>今天的 60 分鐘</h2>
+  <div class="tl" role="list">
+   <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
+   <a role="listitem" style="grid-column:span 15" data-go="19"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
+   <a role="listitem" style="grid-column:span 25" data-go="29"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="41"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+  </div>
+  <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
+ </div>
+</section>
+
+<!-- 3 Divider 1 -->
+<section class="slide divider" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="Part 1 照護是一場馬拉松">
+ <div class="inner">
+  <div class="secnum">01</div>
+  <div class="clock">00–10 min</div>
+  <h1>照護是一場馬拉松，<br>不是百米衝刺</h1>
+  <p class="lead">衝太快的人最先倒下。先看清楚賽道有多長，再決定怎麼配速。</p>
+ </div>
+</section>
+
+<!-- Q1 centenarians -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="Q1 百歲人瑞有幾位">
+ <div class="inner">
+  <div class="eyebrow"><b>Q1</b> 暖身問答 · 1 / 4</div>
+  <h2>臺灣超過 100 歲的長輩，有幾位？</h2>
+  <div class="qz" data-quiz>
+   <button class="qopt" data-correct="0"><span class="qk">A</span>約 650 位</button>
+   <button class="qopt" data-correct="1"><span class="qk">B</span>約 6,500 位</button>
+  </div>
+  <div class="ans" hidden>
+   <div class="grid g2" style="align-items:center">
+    <div class="card stat"><span class="v num">6,489<small>位</small></span><h3>2026 年百歲人瑞，首度突破 6 千人</h3><p class="small">比去年多 740 人，一年增加 13%。女性人瑞遠多於男性（2025 年女 3,412、男 2,337 位）。</p></div>
+    <div class="mini" role="img" aria-label="百歲人瑞人數：2023 年 5011 人、2024 年 5542 人、2025 年 5749 人、2026 年 6489 人">
+     <div class="mrow"><span>2023</span><i style="width:77.2%"></i><b>5,011</b></div>
+     <div class="mrow"><span>2024</span><i style="width:85.4%"></i><b>5,542</b></div>
+     <div class="mrow"><span>2025</span><i style="width:88.6%"></i><b>5,749</b></div>
+     <div class="mrow now"><span>2026</span><i style="width:100%"></i><b>6,489</b></div>
+    </div>
+   </div>
+   <button class="btn ghost more" data-more="q1more">哪個縣市最多人？為什麼？</button>
+   <div class="card" id="q1more" hidden>
+    <span class="tag">歷年統計都是第一</span>
+    <h3>臺北市：人口只有新北市的六成，人瑞卻最多</h3>
+    <ul class="clean small">
+     <li><b>平均壽命全國最高</b>：83.98 歲，比全國多 2.7 歲。</li>
+     <li><b>老得最快</b>：65 歲以上占 24.18%，是全國最高齡的縣市。</li>
+     <li><b>醫療資源密集</b>：醫學中心、診所與長照服務最近、最多。</li>
+     <li><b>社經條件</b>：教育與收入較高，健康識能、營養和就醫習慣較好。</li>
+    </ul>
+    <p class="small">資料：衛福部社會及家庭署重陽節統計、內政部 114 年簡易生命表。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- Q2 oldest -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="Q2 最長壽的長輩幾歲">
+ <div class="inner">
+  <div class="eyebrow"><b>Q2</b> 暖身問答 · 2 / 4</div>
+  <h2>臺灣最長壽的長輩，幾歲？</h2>
+  <div class="qz" data-quiz>
+   <button class="qopt" data-correct="0"><span class="qk">A</span>112 歲</button>
+   <button class="qopt" data-correct="1"><span class="qk">B</span>122 歲</button>
+  </div>
+  <div class="ans" hidden>
+   <div class="grid g3">
+    <div class="card stat"><span class="v num">122<small>歲</small></span><h3>最高齡女性 · 住臺北市</h3><p class="small">衛福部 2025 年重陽統計，創歷年紀錄。</p></div>
+    <div class="card stat am"><span class="v num">115<small>歲</small></span><h3>最高齡男性</h3><p class="small">男女最高齡差了 7 歲，跟平均壽命的差距差不多。</p></div>
+    <div class="card"><span class="tag am">冷知識</span><h3>追平世界紀錄</h3><p class="small">金氏世界紀錄最長壽者是法國的 Jeanne Calment，活到 122 歲。臺灣早年戶籍資料不完整，內政部表示部分人瑞的年齡無法查證。</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- Q3 life expectancy -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="Q3 平均壽命幾歲">
+ <div class="inner">
+  <div class="eyebrow"><b>Q3</b> 暖身問答 · 3 / 4</div>
+  <h2>臺灣目前的平均壽命是幾歲？</h2>
+  <div class="qz q3" data-quiz>
+   <button class="qopt" data-correct="0" data-why="這是男性的平均壽命"><span class="qk">A</span>77.93 歲</button>
+   <button class="qopt" data-correct="1"><span class="qk">B</span>81.27 歲</button>
+   <button class="qopt" data-correct="0" data-why="這是女性的平均壽命"><span class="qk">C</span>84.75 歲</button>
+  </div>
+  <div class="ans" hidden>
+   <div class="grid g3">
+    <div class="card stat"><span class="v num">81.27<small>歲</small></span><h3>全體平均</h3><p class="small">比前一年多 0.50 歲，回到疫情前的水準。</p></div>
+    <div class="card stat"><span class="v num">77.93<small>歲</small></span><h3>男性</h3><p class="small">選 A 的朋友，你選到的是男性。</p></div>
+    <div class="card stat am"><span class="v num">84.75<small>歲</small></span><h3>女性</h3><p class="small">女性比男性多活 <b>6.8 年</b>。</p></div>
+   </div>
+   <p class="small">資料：內政部 114 年簡易生命表（2026 年 8 月公布）。最高臺北市 83.98 歲，最低臺東縣 76.49 歲，相差 7.5 歲。</p>
+  </div>
+ </div>
+</section>
+
+<!-- Q3a trend -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="近十年平均壽命趨勢">
+ <div class="inner">
+  <div class="eyebrow">Q3 延伸 · 近十年趨勢</div>
+  <h2>十年來，男女差距一直都在 6.5 年以上</h2>
+  <div class="chart-wrap">
+   <svg class="lc" viewBox="0 0 720 300" role="img" aria-label="民國105到114年平均壽命趨勢：女性從83.42歲到84.75歲，全體從80.00歲到81.27歲，男性從76.81歲到77.93歲；111年因疫情三條線都下降">
+    <g class="gridl">
+     <line x1="50" y1="20" x2="610" y2="20"/><line x1="50" y1="68" x2="610" y2="68"/><line x1="50" y1="116" x2="610" y2="116"/><line x1="50" y1="164" x2="610" y2="164"/><line x1="50" y1="212" x2="610" y2="212"/><line x1="50" y1="260" x2="610" y2="260"/>
+    </g>
+    <g class="ax">
+     <text x="42" y="24">86</text><text x="42" y="72">84</text><text x="42" y="120">82</text><text x="42" y="168">80</text><text x="42" y="216">78</text><text x="42" y="264">76</text>
+    </g>
+    <g class="axx">
+     <text x="50" y="285">105</text><text x="112" y="285">106</text><text x="174" y="285">107</text><text x="237" y="285">108</text><text x="299" y="285">109</text><text x="361" y="285">110</text><text x="423" y="285">111</text><text x="486" y="285">112</text><text x="548" y="285">113</text><text x="610" y="285">114</text>
+    </g>
+    <rect class="covid" x="405" y="20" width="36" height="240"/>
+    <text class="covid-t" x="423" y="14">疫情</text>
+    <polyline class="l-f" points="50,81.9 112.2,75.2 174.4,66.8 236.7,62.5 298.9,50 361.1,62 423.3,85.3 485.6,74.2 547.8,60.8 610,50"/>
+    <polyline class="l-t" points="50,164 112.2,154.6 174.4,147.4 236.7,143.4 298.9,132.3 361.1,143.4 423.3,167.8 485.6,158.5 547.8,145.5 610,133.5"/>
+    <polyline class="l-m" points="50,240.6 112.2,229.3 174.4,222.8 236.7,219.4 298.9,209.4 361.1,219.9 423.3,244.9 485.6,237.4 547.8,225.9 610,213.7"/>
+    <circle class="d-f" cx="610" cy="50" r="5"/><circle class="d-t" cx="610" cy="133.5" r="5"/><circle class="d-m" cx="610" cy="213.7" r="5"/>
+    <text class="e-f" x="620" y="55">女 84.75</text><text class="e-t" x="620" y="138">全體 81.27</text><text class="e-m" x="620" y="218">男 77.93</text>
+   </svg>
+  </div>
+  <p class="small">橫軸為民國年，縱軸為平均壽命（歲）。資料：內政部歷年簡易生命表。111 年受 COVID-19 影響，三條線同時下滑。</p>
+ </div>
+</section>
+
+<!-- Q3b why men shorter -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="為什麼男性活得比較短">
+ <div class="inner">
+  <div class="eyebrow">Q3 延伸 · 男女差距</div>
+  <h2>男性少活 6.8 年，全世界都一樣</h2>
+  <p class="lead">全球幾乎每個國家都是女性比較長壽，世界平均差距約 5 年。臺灣的差距比全球更大。</p>
+  <div class="grid g2">
+   <div class="card"><span class="tag">先天</span><h3>生物因素：約占一小部分</h3><ul class="clean small"><li>雌激素保護血管，女性心血管疾病發生得較晚</li><li>女性有兩條 X 染色體，基因缺陷有「備份」</li><li>女性免疫反應通常較強</li></ul></div>
+   <div class="card"><span class="tag am">後天</span><h3>行為因素：差距的大部分</h3><ul class="clean small"><li><b>菸、酒、檳榔</b>：男性口腔癌、肺癌、肝病明顯較多</li><li><b>不愛看醫生</b>：症狀撐著、慢性病不規律回診</li><li><b>事故與職業風險</b>：交通、工安意外以男性為主</li><li><b>壓力不說出口</b>：較少求助，社會支持網較小</li></ul></div>
+  </div>
+  <p class="note">好消息是：後天因素都改得了。戒菸、定期健檢、規律運動，是男性最划算的長壽投資。</p>
+ </div>
+</section>
+
+<!-- Q3c world ranking -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="平均壽命的國際排名">
+ <div class="inner">
+  <div class="eyebrow">Q3 延伸 · 國際比較</div>
+  <h2>臺灣在世界排第幾？長壽國家做對了什麼？</h2>
+  <div class="grid g2" style="align-items:start">
+   <div class="card">
+    <span class="tag">臺灣的位置</span>
+    <div class="stat"><span class="v num">28<small>/ 38</small></span></div>
+    <h3>在 OECD 38 國中排第 28 名</h3>
+    <p class="small">OECD 是「經濟合作暨發展組織」，由日本、南韓、美國、歐洲各國等 38 個已開發國家組成，常被當作國際比較的標準。衛福部以 2022 年資料比較，臺灣 79.8 歲，低於 OECD 中位數 81.4 歲。內政部也指出，臺灣低於日本、新加坡、南韓，高於中國、馬來西亞、印尼。</p>
+    <p class="small">長壽前段班：女性以日本、南韓、新加坡、西班牙、瑞士領先；男性以瑞士、瑞典、澳洲、日本、挪威領先。</p>
+   </div>
+   <div class="grid" style="gap:10px">
+    <div class="card"><span class="tag">飲食</span><p class="small"><b>日本和食、地中海飲食</b>：魚、豆類、蔬菜多，紅肉與加工食品少，份量小。</p></div>
+    <div class="card"><span class="tag">活動</span><p class="small"><b>走路是生活的一部分</b>：大眾運輸與步行城市，每天自然累積活動量。</p></div>
+    <div class="card"><span class="tag">預防</span><p class="small"><b>預防勝於治療</b>：國家篩檢、控制血壓血糖，把慢性病擋在前面。</p></div>
+    <div class="card"><span class="tag">參與</span><p class="small"><b>老了也有角色</b>：持續工作、當志工、參加社區活動，社交不中斷。</p></div>
+   </div>
+  </div>
+  <p class="small">各國資料年份與計算方式不同，國際比較僅供參考。</p>
+ </div>
+</section>
+
+<!-- Q3d research -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="研究：長壽的前 5 大因素">
+ <div class="inner">
+  <div class="eyebrow">Q3 延伸 · 研究怎麼說</div>
+  <h2>影響壽命最大的 5 個因素，長壽國家都控制得最好</h2>
+  <p class="small">全球疾病負擔研究 GBD 2021（《刺胳針》The Lancet，2024）：分析 204 個國家、88 項危險因子，依「造成多少健康生命年損失」排序。以下為影響成人的前 5 名。</p>
+  <div class="rank" role="list">
+   <div class="rk" role="listitem"><span class="no">1</span><div class="rk-main"><div class="rk-head"><b>空氣污染（細懸浮微粒）</b><span class="pct num">8.0%</span></div><div class="rk-bar"><i style="width:100%"></i></div><p class="small">長壽國家：空氣品質管制嚴格；個人可做的是看空品指數、減少燒香與油煙。</p></div></div>
+   <div class="rk" role="listitem"><span class="no">2</span><div class="rk-main"><div class="rk-head"><b>高血壓</b><span class="pct num">7.8%</span></div><div class="rk-bar"><i style="width:97.5%"></i></div><p class="small">日本長壽的最大功臣：全國減鹽運動讓血壓下降，中風死亡大幅減少。</p></div></div>
+   <div class="rk" role="listitem"><span class="no">3</span><div class="rk-main"><div class="rk-head"><b>吸菸</b><span class="pct num">5.7%</span></div><div class="rk-bar"><i style="width:71.3%"></i></div><p class="small">新加坡、北歐：高菸稅、公共場所全面禁菸，吸菸率持續下降。</p></div></div>
+   <div class="rk" role="listitem"><span class="no">4</span><div class="rk-main"><div class="rk-head"><b>高血糖</b><span class="pct num">5.4%</span></div><div class="rk-bar"><i style="width:67.5%"></i></div><p class="small">南韓、日本：國家定期健檢，及早發現糖尿病前期並介入。</p></div></div>
+   <div class="rk" role="listitem"><span class="no">5</span><div class="rk-main"><div class="rk-head"><b>肥胖（BMI 過高）</b><span class="pct num">約 4.5%</span></div><div class="rk-bar"><i style="width:56.3%"></i></div><p class="small">日本、南韓的肥胖率全球最低之一：魚、蔬菜多，紅肉少，份量小。</p></div></div>
+  </div>
+  <div class="note"><b>對男性特別重要：</b>哈佛大學追蹤 12 萬人的研究（Circulation，2018）發現，50 歲時做到「不吸菸、體重正常、每天運動 30 分鐘、飲食健康、少量飲酒」五項，男性平均多活 <b>12.2 年</b>，女性多活 14 年。</div>
+ </div>
+</section>
+
+<!-- Q4 unhealthy years -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="Q4 不健康餘命幾年">
+ <div class="inner">
+  <div class="eyebrow"><b>Q4</b> 暖身問答 · 4 / 4</div>
+  <h2>臺灣人一生中「不健康」的時間，平均有幾年？</h2>
+  <div class="qz q3" data-quiz>
+   <button class="qopt" data-correct="0"><span class="qk">A</span>約 2 年</button>
+   <button class="qopt" data-correct="1"><span class="qk">B</span>約 8 年</button>
+   <button class="qopt" data-correct="0"><span class="qk">C</span>約 15 年</button>
+  </div>
+  <div class="ans" hidden>
+   <div class="eq" role="img" aria-label="平均壽命79.84歲減去健康平均餘命72.43歲，等於不健康餘命7.41年">
+    <div><span class="num">79.84</span><em>2022 年平均壽命</em></div><span class="op">−</span>
+    <div><span class="num">72.43</span><em>2022 年健康平均餘命</em></div><span class="op">=</span>
+    <div class="res"><span class="num">7.4 年</span><em>不健康餘命</em></div>
+   </div>
+   <p class="small">為什麼不是前面的 81.27 歲？健康平均餘命要結合健康調查資料計算，公布得比較晚，目前最新的官方數字是 2022 年（民國 111 年）。兩個數字要用同一年相減，所以這裡用 2022 年的平均壽命 79.84 歲，當年正好受疫情影響偏低（見前面趨勢圖）。衛福部 2025 年表示不健康餘命仍「近 8 年」；政府目標是 8 年內把不健康年數占比從 10% 降到 8%。</p>
+  </div>
+ </div>
+</section>
+
+<!-- Q4a myth -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="臥床 7 年的迷思">
+ <div class="inner">
+  <div class="eyebrow">Q4 延伸 · 迷思破解</div>
+  <h2>「臺灣臥床 7 年，北歐臥床 7 天」？</h2>
+  <div class="grid g2">
+   <div class="card myth"><span class="tag al">流傳的說法</span><h3>不健康 = 躺在床上</h3><p class="small">把「不健康餘命」直接說成「臥床」，是錯的。這 7–8 年包含所有帶著慢性病、失能或失智生活的時間，大多數人其實還能下床、出門、自理一部分生活。</p></div>
+   <div class="card"><span class="tag">現在的照護觀念</span><h3>不鼓勵臥床，積極提升離床率</h3><ul class="clean small"><li>躺一週，肌力可能掉 10% 以上，越躺越起不來</li><li>機構與居家都以「每天離床、坐到餐桌吃飯」為目標</li><li>減少約束，用輔具、扶手讓長輩安全地動</li></ul></div>
+  </div>
+  <p class="note">不健康的年數不一定能消失，但「臥床」可以避免。這就是復能與生活化照護的價值。</p>
+ </div>
+</section>
+
+<!-- Q4b abroad -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="國外不健康餘命比較長">
+ <div class="inner">
+  <div class="eyebrow">Q4 延伸 · 國際比較</div>
+  <h2>其實，歐美的不健康餘命比臺灣更長</h2>
+  <div class="rchart" role="img" aria-label="不健康餘命比較：臺灣約7.4年，全球平均9.6年，美國12.4年">
+   <div class="rrow"><div class="lab">臺灣<em>衛福部，2022</em></div><div class="track t14"><div class="r" style="left:0;width:52.9%"><span>7.4 年</span></div></div></div>
+   <div class="rrow"><div class="lab">全球平均<em>183 國，WHO 資料</em></div><div class="track t14"><div class="r am" style="left:0;width:68.6%"><span>9.6 年</span></div></div></div>
+   <div class="rrow"><div class="lab">美國<em>全球最長</em></div><div class="track t14"><div class="r am" style="left:0;width:88.6%"><span>12.4 年</span></div></div></div>
+   <div class="axis"><span></span><div><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div>
+  </div>
+  <p class="small">澳洲、紐西蘭、英國、挪威也是差距最大的國家之一（Mayo Clinic 研究，JAMA Network Open 2024）。各國計算方法不同，數字僅供對照。</p>
+  <div class="grid g2">
+   <div class="card"><span class="tag al">真實情況</span><h3>「北歐 7 天」不是統計數字</h3><p class="small">沒有任何官方統計算過「北歐臥床天數」。這個說法來自日本醫師夫婦宮本顯二、宮本禮子到瑞典等國參訪後的觀察（日文原書《歐美沒有臥床老人》，中文版《不在病床上說再見》）。這是觀察和倡議，不是統計；在臺灣被拿來和「不健康餘命 7–8 年」對照，才變成「7 年對 7 天」。實際上，挪威、瑞典的不健康餘命約 11–12 年（WHO 2021），並不比臺灣短。</p></div>
+   <div class="card"><span class="tag">他們做對的事</span><h3>失能、失智了，生活品質仍然被重視</h3><p class="small">失智長輩仍被鼓勵出門、做家事、決定自己的生活；每天離床、用輔具自己動。到了生命末期，吃不下就不插鼻胃管、不勉強延長，尊重自然善終。所以「長期臥床」的時間很短，是照護方式的結果，不是因為他們比較不會生病。</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- Q4c HALE -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="健康平均餘命">
+ <div class="inner">
+  <div class="eyebrow">Q4 延伸 · 另一個觀點</div>
+  <h2>健康平均餘命：活得「健康」的年數</h2>
+  <p class="lead">正式名稱是<b class="hl">健康平均餘命</b>（Health-Adjusted Life Expectancy，HALE），常簡稱「健康餘命」或「健康壽命」。它扣掉生病、失能的時間，只算健康生活的年數。</p>
+  <div class="grid g3">
+   <div class="card stat"><span class="v num">72.4<small>歲</small></span><h3>臺灣全體</h3><p class="small">衛福部 2022 年資料</p></div>
+   <div class="card stat"><span class="v num">69.9<small>歲</small></span><h3>男性</h3><p class="small">男性的健康年數也比女性少 5 年</p></div>
+   <div class="card stat am"><span class="v num">75.1<small>歲</small></span><h3>女性</h3><p class="small">活得久，不健康的年數也較長</p></div>
+  </div>
+  <div class="grid g2" style="align-items:start">
+   <div class="card">
+    <span class="tag">全球前 5 名（WHO 2021）</span>
+    <div class="mini" role="img" aria-label="WHO 2021 健康平均餘命前五名：新加坡73.6歲、日本73.4歲、南韓72.5歲、冰島71.4歲、盧森堡與挪威71.2歲；臺灣同年71.4歲">
+     <div class="mrow now"><span>新加坡</span><i style="width:100%"></i><b>73.6</b></div>
+     <div class="mrow now"><span>日本</span><i style="width:99.7%"></i><b>73.4</b></div>
+     <div class="mrow now"><span>南韓</span><i style="width:98.5%"></i><b>72.5</b></div>
+     <div class="mrow"><span>冰島</span><i style="width:97%"></i><b>71.4</b></div>
+     <div class="mrow"><span>盧森堡</span><i style="width:96.7%"></i><b>71.2</b></div>
+     <div class="mrow tw"><span>臺灣</span><i style="width:97%"></i><b>71.4</b></div>
+    </div>
+    <p class="small">挪威同為 71.2 歲並列第 5。臺灣為衛福部同年（2021）數字。</p>
+   </div>
+   <div class="note">臺灣不是 WHO 會員，<b>沒有官方名次</b>。若把臺灣 2021 年的 71.4 歲放進 WHO 名單，約在<b>第 4–5 名</b>，僅次於新加坡、日本、南韓。但兩邊計算方法不同，只能當參考。結論：亞洲鄰居新加坡、日本、南韓確實比我們健康得更久，這是我們可以追的目標。</div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 Numbers -->
+<section class="slide" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="四個數字看懂照護壓力">
+ <div class="inner">
+  <div class="eyebrow">BY THE NUMBERS</div>
+  <h2>四個數字，看懂這場賽道</h2>
+  <div class="grid g4">
+   <div class="card stat"><span class="v">20<small>%+</small></span><h3>超高齡社會</h3><p class="small">2025 年起，臺灣每 5 人就有 1 位 65 歲以上長者。</p></div>
+   <div class="card stat"><span class="v">7.3<small>年</small></span><h3>一生的長照需求</h3><p class="small">國人一生中平均需要被照顧的時間。不是幾個月的事。</p></div>
+   <div class="card stat am"><span class="v">1/12</span><h3>失智盛行率 7.99%</h3><p class="small">65 歲以上長者，約每 12 位就有 1 位失智（2023 全國調查）。</p></div>
+   <div class="card stat am"><span class="v">13<small>萬+</small></span><h3>每年因照顧離職</h3><p class="small">許多人在職涯高峰期，因為家人照顧需求而離開職場。</p></div>
+  </div>
+  <p class="note">對企業而言，這是人才留任問題；對個人而言，這是家庭財務問題。及早規劃，兩邊都能少損失。</p>
+ </div>
+</section>
+
+<!-- 5 Cost -->
+<section class="slide" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="照顧的每月成本">
+ <div class="inner">
+  <div class="eyebrow">COST · 每月家庭自付概估（臺北市）</div>
+  <h2>同樣是照顧，每月成本差很多</h2>
+  <div class="rchart" role="img" aria-label="四種照顧方式每月自付範圍比較：居家服務約二千到六千元，日間照顧約五千到一萬二千元，外籍看護約二萬六千到三萬二千元，住宿機構約三萬五千到六萬元">
+   <div class="rrow"><div class="lab">居家服務<em>用長照補助＋部分負擔</em></div><div class="track"><div class="r" style="left:3.33%;width:6.67%"><span>0.2–0.6 萬</span></div></div></div>
+   <div class="rrow"><div class="lab">日間照顧<em>含餐費、交通自付</em></div><div class="track"><div class="r" style="left:8.33%;width:11.67%"><span>0.5–1.2 萬</span></div></div></div>
+   <div class="rrow"><div class="lab">外籍看護<em>薪資＋就安費、健保、仲介</em></div><div class="track"><div class="r am" style="left:43.33%;width:10%"><span>2.6–3.2 萬</span></div></div></div>
+   <div class="rrow"><div class="lab">住宿型機構<em>補助前；最高可補 12 萬/年</em></div><div class="track"><div class="r am flip" style="left:58.33%;width:41.67%"><span>3.5–6 萬</span></div></div></div>
+   <div class="axis"><span></span><div><span>0</span><span>1萬</span><span>2萬</span><span>3萬</span><span>4萬</span><span>5萬</span><span>6萬</span></div></div>
+  </div>
+  <p class="small">數字為常見區間的示意，實際依失能程度、身分別、機構與地區而不同。重點是：<b class="hl">先用足政府資源，再決定自費的部分。</b></p>
+ </div>
+</section>
+
+<!-- 6 PM mindset -->
+<section class="slide" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="把照顧當專案管理">
+ <div class="inner">
+  <div class="eyebrow">MINDSET</div>
+  <h2>把照顧當成一個專案來管理</h2>
+  <p class="lead">很多兒子、先生習慣「自己扛」，等到撐不住才求救。換個角度：你是這個專案的 PM，不是唯一的工程師。</p>
+  <div class="grid g4">
+   <div class="card"><span class="tag">盤點</span><h3>現況與需求</h3><p class="small">爸媽哪些事自己能做？哪些要幫忙？白天誰在家？</p></div>
+   <div class="card"><span class="tag">分工</span><h3>家族會議</h3><p class="small">出錢、出力、陪診、決策各由誰負責，寫下來。</p></div>
+   <div class="card"><span class="tag">外包</span><h3>交給專業</h3><p class="small">洗澡、復健、交通、喘息，政府都有服務可以接手。</p></div>
+   <div class="card"><span class="tag am">預算</span><h3>長期財務</h3><p class="small">以 7 年以上來估算，保留自己的生活與退休金。</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 Divider 2 -->
+<section class="slide divider" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="Part 2 長照 3.0 資源導航">
+ <div class="inner">
+  <div class="secnum">02</div>
+  <div class="clock">10–25 min</div>
+  <h1>長照 3.0 資源導航：<br>讓政府成為你的神隊友</h1>
+  <p class="lead">知道有哪些資源、從哪個入口進去、怎麼組合，比知道所有法規條文更重要。</p>
+ </div>
+</section>
+
+<!-- 8 2.0 vs 3.0 -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="長照 2.0 與 3.0 差在哪">
+ <div class="inner">
+  <div class="eyebrow">2.0 → 3.0</div>
+  <h2>長照 2.0 與 3.0，差在哪裡？</h2>
+  <div class="cmp-wrap">
+   <table class="cmp">
+    <thead><tr><th>面向</th><th>長照 2.0（2017–）</th><th>長照 3.0（2026 起推動）</th></tr></thead>
+    <tbody>
+     <tr><td>核心目標</td><td>把服務「建起來」：社區據點、四包錢、居家服務量能</td><td>把服務「串起來」：醫療、照顧、預防一條龍</td></tr>
+     <tr><td>醫療銜接</td><td>出院後再申請，常有空窗期</td><td>強化出院準備與居家醫療，住院中就銜接長照</td></tr>
+     <tr><td>預防</td><td>以失能後提供服務為主</td><td>往前移：衰弱、失智前期就介入，延緩失能</td></tr>
+     <tr><td>家庭照顧者</td><td>喘息服務為主</td><td>擴大照顧者支持，重視在職照顧者的工作與照顧平衡</td></tr>
+     <tr><td>住宿與科技</td><td>住宿機構補助逐步提高</td><td>持續減輕住宿負擔，導入智慧科技與遠距照護</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="small">3.0 各項給付細則以衛福部及各縣市公告為準；本講座金額依現行給付標準說明。</p>
+ </div>
+</section>
+
+<!-- 9 Entry -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="申請流程四步驟">
+ <div class="inner">
+  <div class="eyebrow">ENTRY POINT</div>
+  <div class="grid g2" style="align-items:center">
+   <div style="display:grid;gap:10px">
+    <h2>記住一支電話就夠了</h2>
+    <div class="big-phone num">1966</div>
+    <p class="lead">長照專線，前 5 分鐘免費。家人住院中，也可以直接找醫院的<b>出院準備服務</b>，出院前就評估好。</p>
+   </div>
+   <div class="steps" style="grid-template-columns:1fr 1fr">
+    <div class="card"><span class="n">1</span><h3>撥打 1966</h3><p class="small">說明長輩狀況與住址</p></div>
+    <div class="card"><span class="n">2</span><h3>照管專員到府</h3><p class="small">評估失能等級 CMS 1–8，2 級以上可使用給付</p></div>
+    <div class="card"><span class="n">3</span><h3>個管師擬計畫</h3><p class="small">依需求組合服務，可以提出你的想法</p></div>
+    <div class="card"><span class="n">4</span><h3>服務開始</h3><p class="small">狀況改變可申請重新評估</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 10 Calculator -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="四包錢試算">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · 長照四包錢試算</div>
+  <h2>你家可以用多少？</h2>
+  <div class="grid g2">
+   <div style="display:grid;gap:6px"><span class="small">失能等級（CMS）</span><div class="seg" id="cms" role="group" aria-label="失能等級"></div></div>
+   <div style="display:grid;gap:6px"><span class="small">福利身分</span><div class="seg" id="idn" role="group" aria-label="福利身分">
+    <button data-v="g" aria-pressed="true">一般戶</button><button data-v="m" aria-pressed="false">中低收入</button><button data-v="l" aria-pressed="false">低收入</button></div></div>
+  </div>
+  <div class="calc-out" id="calcOut"></div>
+  <p class="small">交通接送以臺北市（第 1 類）計算；聘有外籍看護的家庭，照顧及專業服務以專業服務為主。實際以照管中心核定為準。</p>
+ </div>
+</section>
+
+<!-- AT-1 process -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="輔具與無障礙申請流程">
+ <div class="inner">
+  <div class="eyebrow">ASSISTIVE TECH · 輔具與居家無障礙</div>
+  <h2>申請輔具和無障礙改善，家屬最常問的三件事</h2>
+  <div class="grid g3">
+   <div class="card"><span class="tag">Q1 要不要評估？</span><h3>要，先評估、再購買</h3><p class="small">先打 1966 取得長照等級（2 級以上）。輪椅、移位機、電動床、居家無障礙工程等多數品項，還要由<b>輔具評估人員</b>到府出具評估報告。</p><p class="small"><b class="am">自己先買再來申請，通常不能補助。</b></p></div>
+   <div class="card"><span class="tag">Q2 要先付全額嗎？</span><h3>找特約廠商，只付自付額</h3><p class="small">拿核定公文到<b>長照特約</b>的輔具或無障礙廠商，你只付「部分負擔＋超出給付上限的差額」，其餘由廠商向縣市政府請款。</p><p class="small">核定後通常有期限（例如 6 個月）內要完成購買或施工。</p></div>
+   <div class="card"><span class="tag am">Q3 補助多少？</span><h3>看身分，也看品項上限</h3><p class="small">一般戶補助 <b>70%</b>、中低收入戶 <b>90%</b>、低收入戶 <b>100%</b>。但比例是乘在<b>每個品項的給付上限</b>，不是乘在實際價格。</p></div>
+  </div>
+  <div class="steps">
+   <div class="card"><span class="n">1</span><h3>撥 1966</h3><p class="small">照管專員評估長照等級</p></div>
+   <div class="card"><span class="n">2</span><h3>輔具評估</h3><p class="small">評估人員到府，開評估報告</p></div>
+   <div class="card"><span class="n">3</span><h3>核定品項與金額</h3><p class="small">選第 1 組或第 2 組額度</p></div>
+   <div class="card"><span class="n">4</span><h3>特約廠商購買／施工</h3><p class="small">付自付額，廠商請款</p></div>
+  </div>
+  <p class="small">各縣市作業細節略有不同（少數情況需先付款再核銷），以當地照管中心公告為準。</p>
+ </div>
+</section>
+
+<!-- AT-2 copay calculator -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="自付額怎麼算">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · 自付額試算</div>
+  <h2>為什麼無障礙工程，常常自己付比較多？</h2>
+  <div class="grid g2" style="align-items:start">
+   <div class="card">
+    <div class="formula"><b>政府補助</b> ＝ 品項給付上限 × 補助比例<br><b>你付</b> ＝ 實際價格 − 政府補助</div>
+    <div class="fld"><label for="atPrice">廠商實際報價（元）</label><input id="atPrice" type="number" inputmode="numeric" min="0" step="500" value="120000"></div>
+    <div class="fld"><label for="atCap">可給付品項上限加總（元）</label><input id="atCap" type="number" inputmode="numeric" min="0" step="500" value="26000"></div>
+    <div class="seg" id="atIdn" role="group" aria-label="福利身分"><button data-v="0.7" aria-pressed="true">一般戶 70%</button><button data-v="0.9" aria-pressed="false">中低收 90%</button><button data-v="1" aria-pressed="false">低收 100%</button></div>
+    <p class="small">上限加總不能超過 3 年額度（第 1 組 4 萬元）。</p>
+   </div>
+   <div class="card">
+    <span class="tag am">試算結果</span>
+    <div class="split" role="img" id="atSplit" aria-label="補助與自付比例"><i class="sub"></i><i class="self"></i></div>
+    <div class="at-out">
+     <div><span class="small">政府補助</span><b class="num hl" id="atSub">—</b></div>
+     <div><span class="small">你付</span><b class="num am" id="atSelf">—</b></div>
+     <div><span class="small">實際補助占比</span><b class="num" id="atPct">—</b></div>
+    </div>
+    <p class="small" id="atMsg"></p>
+   </div>
+  </div>
+  <p class="small">預設為示意：浴室改造報價 12 萬元，其中扶手（固定式每 10 公分 150 元）、防滑（3,000 元）、斜坡道（10,000 元）、門改拉門等可給付項目加總約 2.6 萬元。實際上限依品項代碼核定。</p>
+ </div>
+</section>
+
+<!-- AT-3 smart devices -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="科技輔具划算嗎">
+ <div class="inner">
+  <div class="eyebrow">長照 3.0 新制 · 2026 年 7 月起</div>
+  <h2>科技輔具補助 6 萬元，真的比較划算嗎？</h2>
+  <div class="cmp-wrap">
+   <table class="cmp">
+    <thead><tr><th>3 年額度</th><th>第 1 組：傳統輔具</th><th>第 2 組：智慧科技輔具</th></tr></thead>
+    <tbody>
+     <tr><td>總額度</td><td>4 萬元</td><td>6 萬元</td></tr>
+     <tr><td>居家無障礙</td><td>與輔具共用 4 萬</td><td>最多 2 萬元</td></tr>
+     <tr><td>取得方式</td><td>購買或租賃</td><td><b>全租賃</b>，需求變了可以換</td></tr>
+     <tr><td>品項</td><td>輪椅、便盆椅、扶手、斜坡等，選擇多</td><td>移動、移位、沐浴排泄、照顧床、安全看視 5 大類；首批 17 件</td></tr>
+     <tr><td>規則</td><td colspan="2">兩組<b>二擇一</b>，選定後 3 年內不能更換；需輔具評估人員出具報告</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="grid g2">
+   <div class="card"><span class="tag">可能划算</span><p class="small">需要高價設備（智慧照顧床、移位設備、離床或跌倒看視），照顧者白天要上班，且家裡不需要大型無障礙工程。</p></div>
+   <div class="card"><span class="tag al">要小心</span><p class="small">租金每月持續扣額度，3 年 6 萬平均每月約 1,667 元；無障礙只剩 2 萬；品項還少；長輩與家屬要花時間學操作。<b>需要浴室改造、大量傳統輔具的家庭，第 1 組可能更實用。</b></p></div>
+  </div>
+ </div>
+</section>
+
+<!-- AT-4 disability vs LTC -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="身障資源與長照搭配">
+ <div class="inner">
+  <div class="eyebrow">身心障礙 × 長照 3.0</div>
+  <h2>有身障證明，又有長照資格？兩邊資源可以搭配</h2>
+  <div class="cmp-wrap">
+   <table class="cmp two">
+    <thead><tr><th>項目</th><th>身心障礙福利</th><th>長照 3.0</th></tr></thead>
+    <tbody>
+     <tr><td>資格</td><td>領有身心障礙證明，不限年齡</td><td>長照等級 2–8 級（65 歲以上、50 歲以上失智、失能身障者等）</td></tr>
+     <tr><td>窗口</td><td>社會局、輔具資源中心</td><td>1966、長期照顧管理中心</td></tr>
+     <tr><td>輔具補助</td><td>每個品項有自己的上限；低收 100%、中低收 75%、一般戶 50%</td><td>3 年總額 4 萬（或第 2 組 6 萬）；低收 100%、中低收 90%、一般戶 70%</td></tr>
+     <tr><td>照顧服務</td><td>個人助理、身障日間照顧、臨時及短期照顧</td><td>居家服務、日照、居家復能、喘息</td></tr>
+     <tr><td>交通</td><td>復康巴士</td><td>長照交通接送</td></tr>
+     <tr><td>經濟支持</td><td>生活補助、稅捐減免、停車位識別證、愛心卡</td><td>住宿機構補助（最高 12 萬／年）</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="grid g3">
+   <div class="note"><b>同一項輔具不能兩邊重複補助</b>，同類服務（喘息與臨短照、復康巴士與交通接送）通常擇一或依規定分配。</div>
+   <div class="note"><b>小件、多件</b>（扶手、便盆椅、助行器）：一般戶用長照較划算（補 70%）。</div>
+   <div class="note"><b>單價高</b>（電動輪椅、移位機）：長照 4 萬額度不夠時，改走身障補助，把長照額度留給其他品項。</div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 Combination -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="居家、社區、機構組合戰術">
+ <div class="inner">
+  <div class="eyebrow">STRATEGY MAP</div>
+  <h2>居家、社區、機構的組合戰術</h2>
+  <div class="grid g3">
+   <div class="card"><span class="tag">居家</span><h3>長輩在自己家</h3><ul class="clean small"><li>居家服務：沐浴、備餐、陪同</li><li>居家復能：治療師到府教功能訓練</li><li>居家護理、居家醫療</li></ul></div>
+   <div class="card"><span class="tag">社區</span><h3>白天出門，晚上回家</h3><ul class="clean small"><li>日間照顧中心、小規模多機能</li><li>家庭托顧</li><li>巷弄長照站、失智據點</li></ul></div>
+   <div class="card"><span class="tag am">住宿</span><h3>需要 24 小時照顧</h3><ul class="clean small"><li>長照住宿機構、護理之家</li><li>失智團體家屋</li><li>住宿補助最高 12 萬元/年</li></ul></div>
+  </div>
+  <div class="grid g3">
+   <div class="note"><b>雙薪上班族：</b>日照 ＋ 交通接送 ＋ 週末喘息</div>
+   <div class="note"><b>已請外籍看護：</b>居家復能 ＋ 喘息 ＋ 輔具補助</div>
+   <div class="note"><b>剛出院、體力差：</b>出院準備 ＋ 居家復能 3 個月衝刺</div>
+  </div>
+ </div>
+</section>
+
+<!-- 12 Employer -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="在職照顧者的工具箱">
+ <div class="inner">
+  <div class="eyebrow">AT WORK</div>
+  <h2>在職照顧者的工具箱</h2>
+  <div class="grid g3">
+   <div class="card"><span class="tag">法定權益</span><h3>家庭照顧假 7 天</h3><p class="small">家人需要照顧時可請，每年 7 日，併入事假計算。</p></div>
+   <div class="card"><span class="tag">彈性安排</span><h3>先跟主管談</h3><p class="small">陪診、評估日、出院日先排好，比臨時請假更好協調。</p></div>
+   <div class="card"><span class="tag">情緒支持</span><h3>不是只有你</h3><p class="small">家庭照顧者關懷專線、照顧者支持據點，提供諮詢與課程。</p></div>
+  </div>
+  <p class="note">建議做法：把「照顧日曆」和工作行事曆放在一起，提早 2 週標出回診、評估與喘息日期。</p>
+ </div>
+</section>
+
+<!-- 13 Divider 3 -->
+<section class="slide divider" data-sec="失智、失能的生活化解法" data-end="50" data-title="Part 3 生活化照護法">
+ <div class="inner">
+  <div class="secnum">03</div>
+  <div class="clock">25–50 min</div>
+  <h1>失智症、失能的<br>「生活化」照護法</h1>
+  <p class="lead">最好的復健，藏在每天的生活裡。先學會看懂警訊，再學會怎麼陪。</p>
+ </div>
+</section>
+
+<!-- 14 Warning signs -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="大腦的求救信號">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · 失智症十大警訊</div>
+  <h2>大腦的求救信號</h2>
+  <p class="small">想著家中長輩，點選最近半年出現的狀況：</p>
+  <div class="chk" id="signs"></div>
+  <div class="result" id="signsRes">尚未勾選</div>
+ </div>
+</section>
+
+<!-- Lancet dementia prevention -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="失智預防 14 個因子">
+ <div class="inner">
+  <div class="eyebrow">PREVENTION · 《刺胳針》Lancet 失智症委員會 2024</div>
+  <h2>近一半的失智（45%），可以預防或延後</h2>
+  <p class="small">研究整理一生中 14 個可改變的危險因子，依「如果完全消除，可減少多少失智」排序。點任一項看生活中怎麼做。</p>
+  <div class="dz-legend"><span class="lg e">早年</span><span class="lg m">中年（約 45–65 歲）</span><span class="lg l">老年</span></div>
+  <div class="dz" id="dz"></div>
+  <div class="note" id="dzTip" aria-live="polite">點上面任一項，這裡會顯示「怎麼融入生活」。</div>
+ </div>
+</section>
+
+<!-- 15 Frailty -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="身體的求救信號">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · 衰弱與跌倒風險</div>
+  <h2>身體的求救信號：衰弱</h2>
+  <div class="grid g2">
+   <div class="card">
+    <h3>衰弱五徵兆</h3>
+    <ul class="clean small">
+     <li>一年內體重沒刻意減卻掉了 3 公斤以上</li>
+     <li>常覺得累、提不起勁</li>
+     <li>握力變差：轉瓶蓋、提東西吃力</li>
+     <li>走路變慢，過馬路來不及</li>
+     <li>活動量明顯變少，常坐著</li>
+    </ul>
+    <p class="small"><b class="am">1–2 項</b>是衰弱前期，<b class="am">3 項以上</b>是衰弱。衰弱是可以逆轉的。</p>
+   </div>
+   <div class="card">
+    <h3>現場試試：椅子坐站 5 次</h3>
+    <p class="small">雙手交叉胸前，從椅子站起、坐下，連續 5 次。超過 14 秒建議做進一步評估。</p>
+    <div class="watch"><span class="time" id="swT">0.0</span><button class="btn" id="swB">開始計時</button><button class="btn ghost" id="swR">重設</button></div>
+    <div class="result" id="swRes" hidden></div>
+    <p class="small">請扶著牢固的椅子，頭暈或疼痛就停。</p>
+   </div>
+  </div>
+  <p class="note">肌力下降和跌倒常是失能的起點。髖部骨折後，很多長輩就此無法回到原本的生活。</p>
+ </div>
+</section>
+
+<!-- ICOPE -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="ICOPE 長者量六力">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · ICOPE 長者功能評估</div>
+  <h2>長者量六力：提早發現衰弱，積極預防</h2>
+  <p class="small">WHO 推出的 ICOPE 整合照護，國健署稱為「長者量六力」。65 歲以上（原住民 55 歲以上）每年檢測一次，一項異常就進一步評估與介入。陪爸媽一起答答看：</p>
+  <div class="icope" id="icope"></div>
+  <div class="result" id="icopeRes">尚未勾選：全部正常，明年再測一次。</div>
+ </div>
+</section>
+
+<!-- 16 Medication -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="藥物介入">
+ <div class="inner">
+  <div class="eyebrow">PHARMACOLOGICAL</div>
+  <h2>藥物介入：家屬要知道的事</h2>
+  <div class="grid g3">
+   <div class="card"><span class="tag">改善認知</span><h3>乙醯膽鹼酶抑制劑</h3><p class="small">Donepezil、Rivastigmine（有貼片）、Galantamine。輕中度常用，健保依評估分數給付。</p><p class="small">留意：腸胃不適、心跳變慢、頭暈。</p></div>
+   <div class="card"><span class="tag">中重度</span><h3>NMDA 受體拮抗劑</h3><p class="small">Memantine，可單用或合併使用。</p><p class="small">留意：頭暈、嗜睡、便秘。</p></div>
+   <div class="card"><span class="tag am">新藥</span><h3>抗類澱粉蛋白抗體</h3><p class="small">適用早期患者，需做檢查確認、定期 MRI 追蹤，目前多為自費。</p><p class="small">是否適合要和神經科醫師詳談。</p></div>
+  </div>
+  <div class="grid g2">
+   <div class="note"><b>行為與情緒症狀（BPSD）先用非藥物方法。</b>鎮靜類藥物用最低劑量、短期，並注意跌倒風險。</div>
+   <div class="card"><h3>家屬的三件工作</h3><p class="small">一週藥盒分裝 · 記錄睡眠、食慾和情緒變化 · 回診時帶紀錄給醫師看</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 17 Exercise -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="非藥物：運動處方">
+ <div class="inner">
+  <div class="eyebrow">NON-PHARMACOLOGICAL · 預防失能與跌倒</div>
+  <h2>運動，是預防失智和失能最有效的方法</h2>
+  <p class="small">世界衛生組織 2020 年身體活動指引（65 歲以上）：</p>
+  <div class="grid g3">
+   <div class="card stat"><span class="v num">150–300<small>分/週</small></span><h3>有氧</h3><p class="small">中等強度（可以說話但無法唱歌）；或高強度 75–150 分鐘。拆成每天 20–40 分鐘。</p></div>
+   <div class="card stat"><span class="v num">≥2<small>天/週</small></span><h3>肌力</h3><p class="small">練到全身大肌群，大腿、臀部最重要；中等以上強度，做到最後幾下會累。</p></div>
+   <div class="card stat am"><span class="v num">≥3<small>天/週</small></span><h3>平衡＋多元功能</h3><p class="small">把平衡和肌力結合成功能性動作（起身、跨步、轉身），重點在預防跌倒。</p></div>
+  </div>
+  <div class="grid g2">
+   <div class="note"><b>防跌效果（Cochrane 系統性回顧 2019，108 篇隨機試驗）：</b>以平衡與功能訓練為主的運動，跌倒次數減少 <b>24%</b>；平衡加肌力等多種運動合併，減少約 <b>34%</b>。</div>
+   <div class="card"><h3>居家三動作</h3><p class="small"><b>椅子坐站</b> 10 下 × 2 組 · <b>扶椅踮腳尖</b> 15 下 × 2 組 · <b>扶椅單腳站</b> 左右各 10 秒 × 3 次。手可扶穩固的椅子，頭暈或疼痛就停。</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- Exercise for dementia -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="失智與 MCI 的運動處方">
+ <div class="inner">
+  <div class="eyebrow">NON-PHARMACOLOGICAL · 失智與輕度認知障礙</div>
+  <h2>對大腦最有效的，是「混合式」運動</h2>
+  <div class="grid g2" style="align-items:start">
+   <div class="card">
+    <span class="tag">輕度認知障礙（MCI）</span>
+    <h3>多元運動效果最好</h3>
+    <p class="small">網絡統合分析（42 篇隨機試驗，2024）：有氧＋肌力＋平衡＋認知挑戰的<b>多元運動</b>，對整體認知與執行功能改善最多。</p>
+    <div class="rx"><span><b class="num">30</b> 分/次</span><span><b class="num">3–4</b> 次/週</span><span><b class="num">≥150</b> 分/週</span><span><b class="num">12–24</b> 週以上</span></div>
+   </div>
+   <div class="card">
+    <span class="tag am">失智症</span>
+    <h3>有氧＋肌力合併，優於單一運動</h3>
+    <p class="small">劑量反應網絡統合分析（68 篇研究、6,544 人）：每週約 336 MET-分鐘開始有效，<b>934 MET-分鐘</b>以上才有臨床上看得出的改善。</p>
+    <div class="rx"><span>中等強度約每週 <b class="num">90</b> 分起</span><span>目標約 <b class="num">230</b> 分/週</span></div>
+    <p class="small">以中等強度約 4 MET 換算；依體能從少量開始，慢慢加。</p>
+   </div>
+  </div>
+  <div class="grid g3">
+   <div class="card"><span class="tag">有氧</span><p class="small">快走、踏步、固定式腳踏車，陪著一起走最容易持續。</p></div>
+   <div class="card"><span class="tag">肌力</span><p class="small">椅子坐站、彈力帶、提水瓶，每週 2–3 次。</p></div>
+   <div class="card"><span class="tag am">雙重任務</span><p class="small">邊踏步邊數數、邊走邊說水果名稱，同時練腦和腿；太難就降階，讓長輩做成功。</p></div>
+  </div>
+  <p class="small">兩篇統合分析對「每週幾次最好」的結論不完全一致，以每週合計 150 分鐘以上為共同基準。</p>
+ </div>
+</section>
+
+<!-- 18 Daily activities -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="生活化活動設計">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · 生活就是復健</div>
+  <h2>把家事變成訓練</h2>
+  <p class="small">點卡片，看怎麼依長輩能力調整難度：</p>
+  <div class="grid g4" id="acts"></div>
+  <p class="note">四個原則：<b>保留角色</b>（讓他還是一家之主）、<b>簡化步驟</b>、<b>給選擇</b>、<b>讓他做成功</b>。</p>
+ </div>
+</section>
+
+<!-- 19 Communication -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="溝通情境題">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · 溝通情境題</div>
+  <div class="grid g2" style="align-items:start">
+   <div style="display:grid;gap:12px">
+    <p class="small">傍晚五點，住了四十年的家裡，爸爸穿好外套站在門口說：</p>
+    <p class="quote">「我要回家。」</p>
+    <p class="small">你會怎麼回應？</p>
+   </div>
+   <div style="display:grid;gap:10px">
+    <div class="opts" id="quiz">
+     <button data-ok="0">「爸，這裡就是你家啊！你看清楚。」</button>
+     <button data-ok="1">「你想回家呀，家裡有什麼讓你掛心的？我們先喝杯茶，你說給我聽。」</button>
+     <button data-ok="0">「天黑了不要亂跑，坐好。」</button>
+    </div>
+    <p class="fb small" id="quizFb" aria-live="polite"></p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 20 Home environment -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="輔具與居家環境">
+ <div class="inner">
+  <div class="eyebrow">ENVIRONMENT · 長照補助 3 年 4 萬元（第 1 組）</div>
+  <h2>輔具與居家環境改造</h2>
+  <div class="grid g4">
+   <div class="card"><span class="tag al">最常跌倒</span><h3>浴室</h3><ul class="clean small"><li>馬桶旁、淋浴區扶手</li><li>止滑墊、洗澡椅</li><li>門檻移除</li></ul></div>
+   <div class="card"><span class="tag">臥室</span><h3>起身與夜間</h3><ul class="clean small"><li>床邊扶手、適當床高</li><li>感應式夜燈</li><li>床到廁所的動線淨空</li></ul></div>
+   <div class="card"><span class="tag">動線</span><h3>客廳與走道</h3><ul class="clean small"><li>收起電線、小地墊</li><li>常用物放在腰到肩的高度</li><li>椅子要有扶手</li></ul></div>
+   <div class="card"><span class="tag">失智友善</span><h3>看得懂的家</h3><ul class="clean small"><li>廁所門貼圖示</li><li>大字時鐘與日曆</li><li>危險物品收納上鎖</li></ul></div>
+  </div>
+  <p class="note">先評估、再購買：可請職能或物理治療師到府評估，或洽各縣市輔具資源中心試用，避免買錯。</p>
+ </div>
+</section>
+
+<!-- 21 Hotlines -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="資源轉介電話">
+ <div class="inner">
+  <div class="eyebrow">KEEP THIS · 建議存進手機</div>
+  <h2>需要幫忙時，打這幾支電話</h2>
+  <div class="grid g4" id="hot"></div>
+  <p class="small">另可洽：各縣市長期照顧管理中心、失智共同照護中心、輔具資源中心。</p>
+ </div>
+</section>
+
+<!-- 22 Q&A -->
+<section class="slide" data-sec="Q&A 實務諮詢" data-end="60" data-title="Q&A 常見問題">
+ <div class="inner">
+  <div class="eyebrow">50–60 min · Q&amp;A</div>
+  <h2>常見問題</h2>
+  <div>
+   <details><summary>爸媽不願意讓陌生人來家裡評估，怎麼辦？</summary><p>用「政府的健康檢查」「醫師建議」來說明，比「你需要被照顧」更容易被接受。可以請長輩信任的親友或醫師幫忙開口，評估當天家屬陪同。</p></details>
+   <details><summary>家裡已經請外籍看護，還能用長照服務嗎？</summary><p>可以。專業服務（如居家復能）、交通接送、輔具與居家無障礙補助、喘息服務都能申請，看護休假時正好用喘息銜接。</p></details>
+   <details><summary>家人住院中，出院後怎麼不要有空窗期？</summary><p>住院期間就詢問醫院的出院準備服務，請他們協助轉介長照評估，出院前把居家服務或復能排好。</p></details>
+   <details><summary>我住臺北，爸媽住南部，可以怎麼照顧？</summary><p>以長輩戶籍或居住地申請，由當地照管中心評估。你可以擔任主要聯絡人，搭配定期視訊、藥盒與安全裝置，返鄉時參加照顧計畫討論。</p></details>
+   <details><summary>怎麼知道該換成機構照顧了？</summary><p>當照顧者的身心健康已經被拖垮、長輩需要 24 小時看視、或夜間頻繁照顧讓全家睡不好時，就是重新評估的時機。選擇機構不是放棄，是換一種照顧方式。</p></details>
+  </div>
+ </div>
+</section>
+
+<!-- 23 Closing -->
+<section class="slide" data-sec="Q&A 實務諮詢" data-end="60" data-title="帶走三件事">
+ <div class="inner">
+  <div class="eyebrow">TAKEAWAYS</div>
+  <h1>今天帶走三件事</h1>
+  <div class="grid g3">
+   <div class="card"><span class="tag">1</span><h3>有狀況，先打 1966</h3><p class="small">住院中就找出院準備服務，別等到出院才開始。</p></div>
+   <div class="card"><span class="tag">2</span><h3>每週 150 分鐘，生活就是復健</h3><p class="small">讓長輩繼續做他能做的事，比全部幫他做更好。</p></div>
+   <div class="card"><span class="tag am">3</span><h3>照顧是團隊戰</h3><p class="small">你是 PM，不是唯一的工程師。照顧好自己，才跑得完全程。</p></div>
+  </div>
+  <div class="follow">
+   <a class="fb" href="https://www.facebook.com/profile.php?id=100063748491881" target="_blank" rel="noopener">
+    <div class="qr" data-qr="https://www.facebook.com/profile.php?id=100063748491881" aria-hidden="true"></div>
+    <div class="fb-tx"><b>想看更多？按讚・追蹤・分享臉書粉專</b><p>失智照護、復能運動、長照資源，每天都有教案與專業文章，留言即可取得。也歡迎分享給正在照顧家人的同事與朋友。</p></div>
+    <span class="go">前往粉專 ↗</span>
+   </a>
+   <div class="links">
+    <a class="rl" href="https://mattsue1003.github.io/long-term-care-assistive-devices-database/" target="_blank" rel="noopener"><b>長照輔具資料庫</b><span>依功能與食衣住行查輔具</span><i>↗</i></a>
+    <a class="rl" href="https://mattsue1003.github.io/longtermcare/" target="_blank" rel="noopener"><b>輔具補助查詢</b><span>長照、身障補助方向</span><i>↗</i></a>
+    <a class="rl" href="https://mattsue1003.github.io/homecare-worker-handbook/" target="_blank" rel="noopener"><b>照顧・復能資料庫</b><span>在家照顧的做法與注意事項</span><i>↗</i></a>
+   </div>
+  </div>
+  <p class="lead">謝謝大家。</p>
+ </div>
+</section>
+
+</main>
+
+<nav class="bar" aria-label="簡報控制">
+ <button class="nav" id="prev" aria-label="上一頁"><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+ <button class="mid" id="midBtn" aria-label="開啟目錄"><span class="sec" id="secLbl"></span><span class="cnt" id="cnt"></span></button>
+ <button class="tool hide-m" id="fs" aria-label="全螢幕"><svg class="i" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+ <button class="nav next" id="next" aria-label="下一頁"><svg class="i" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+</nav>
+
+<div class="ov" id="ov" hidden role="dialog" aria-label="目錄">
+ <div class="ov-head"><h2>目錄</h2><button class="btn ghost" id="ovClose">關閉</button></div>
+ <div class="ov-grid" id="ovGrid"></div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(()=>{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const slides=$$('.slide'); const N=slides.length; let cur=0;
+
+function go(i,fromHash){
+  i=Math.max(0,Math.min(N-1,i)); cur=i;
+  slides.forEach((s,k)=>{s.classList.toggle('is-active',k===i);s.classList.toggle('is-before',k<i);s.setAttribute('aria-hidden',k!==i)});
+  slides[i].scrollTop=0;
+  $('#prog').style.width=((i+1)/N*100)+'%';
+  $('#secLbl').textContent=slides[i].dataset.sec;
+  $('#cnt').textContent=(i+1)+' / '+N;
+  $('#prev').disabled=i===0; $('#next').disabled=i===N-1;
+  if(!fromHash){try{history.replaceState(null,'','#s'+(i+1))}catch(e){}}
+}
+const next=()=>go(cur+1), prev=()=>go(cur-1);
+$('#next').onclick=next; $('#prev').onclick=prev;
+$$('[data-go]').forEach(a=>a.addEventListener('click',()=>go(+a.dataset.go-1)));
+
+// keyboard
+document.addEventListener('keydown',e=>{
+  if(e.target.closest('input,select,textarea'))return;
+  const ov=!$('#ov').hidden;
+  if(e.key==='Escape'&&ov){closeOv();return}
+  if(ov)return;
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+  else if(e.key==='Home')go(0); else if(e.key==='End')go(N-1);
+  else if(e.key==='o'||e.key==='O')openOv();
+  else if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+// swipe
+let sx=0,sy=0,st=0,track=false;
+const deck=$('#deck');
+deck.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;sx=e.touches[0].clientX;sy=e.touches[0].clientY;st=Date.now();track=true},{passive:true});
+deck.addEventListener('touchend',e=>{if(!track)return;track=false;const t=e.changedTouches[0];const dx=t.clientX-sx,dy=t.clientY-sy;
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4&&Date.now()-st<800){dx<0?next():prev()}},{passive:true});
+
+// overview
+const ovGrid=$('#ovGrid');
+slides.forEach((s,k)=>{const b=document.createElement('button');b.innerHTML='<span class="k">'+String(k+1).padStart(2,'0')+' · '+s.dataset.sec+'</span><span class="t"></span>';b.querySelector('.t').textContent=s.dataset.title;b.onclick=()=>{go(k);closeOv()};ovGrid.appendChild(b)});
+function openOv(){$('#ov').hidden=false;[...ovGrid.children].forEach((b,k)=>b.classList.toggle('cur',k===cur));ovGrid.children[cur].focus()}
+function closeOv(){$('#ov').hidden=true;$('#midBtn').focus()}
+$('#midBtn').onclick=openOv; $('#ovClose').onclick=closeOv;
+
+// fullscreen
+function toggleFs(){try{if(document.fullscreenElement)document.exitFullscreen();else{const p=document.documentElement.requestFullscreen?.();p&&p.catch(()=>toast('此環境不支援全螢幕'))}}catch(e){toast('此環境不支援全螢幕')}}
+$('#fs').onclick=toggleFs;
+
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,1800)}
+
+// ---- calculator ----
+const CMS={2:10020,3:15460,4:18580,5:24100,6:28070,7:32090,8:36180};
+const RATE={g:{care:.16,tr:.30,aid:.30,resp:.16},m:{care:.05,tr:.10,aid:.10,resp:.05},l:{care:0,tr:0,aid:0,resp:0}};
+let lv=4,idn='g';
+const cmsBox=$('#cms');
+for(let k=2;k<=8;k++){const b=document.createElement('button');b.textContent=k+' 級';b.dataset.v=k;b.setAttribute('aria-pressed',k===lv);cmsBox.appendChild(b)}
+const fmt=n=>Math.round(n).toLocaleString('zh-TW');
+function calc(){
+  const r=RATE[idn], care=CMS[lv], resp=lv>=7?48510:32340, tr=1680, aid=40000;
+  const row=(tag,t,v,unit,pay)=>`<div class="card"><span class="tag">${tag}</span><h3>${t}</h3><span class="v">${fmt(v)}<span class="small"> 元${unit}</span></span><span class="pay">自付約 <b>${fmt(pay)}</b> 元</span></div>`;
+  $('#calcOut').innerHTML=
+    row('第 1 包','照顧及專業服務',care,'/月',care*r.care)+
+    row('第 2 包','交通接送',tr,'/月',tr*r.tr)+
+    row('第 3 包','輔具及居家無障礙',aid,'/3 年',aid*r.aid)+
+    row('第 4 包','喘息服務',resp,'/年',resp*r.resp);
+}
+cmsBox.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;lv=+b.dataset.v;[...cmsBox.children].forEach(x=>x.setAttribute('aria-pressed',x===b));calc()});
+$('#idn').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;idn=b.dataset.v;[...$('#idn').children].forEach(x=>x.setAttribute('aria-pressed',x===b));calc()});
+calc();
+
+// ---- warning signs ----
+const SIGNS=[['記憶減退影響到生活','剛說過的事馬上忘、重複問同樣問題'],['計劃事情或解決問題有困難','算帳、照食譜做菜變得吃力'],['無法勝任原本熟悉的事務','開了幾十年的車、做慣的菜突然不會'],['對時間、地點感到混淆','分不清白天晚上，在熟悉的地方迷路'],['理解視覺影像和空間關係有困難','判斷距離、看懂圖像出問題，易跌倒'],['言語表達或書寫出現困難','叫不出常用物品的名字，說話繞圈'],['東西擺放錯亂，且找不回來','把錢包放進冰箱，懷疑別人偷'],['判斷力變差或減弱','容易被推銷、詐騙，穿著不合季節'],['從職場或社交活動中退出','不想出門、放棄多年的嗜好'],['情緒和個性改變','變得多疑、易怒、憂鬱或焦慮']];
+const sb=$('#signs');
+SIGNS.forEach(([a,b])=>{const btn=document.createElement('button');btn.setAttribute('aria-pressed','false');btn.innerHTML='<span class="box" aria-hidden="true"></span><span><b></b><em></em></span>';btn.querySelector('b').textContent=a;btn.querySelector('em').textContent=b;
+  btn.onclick=()=>{btn.setAttribute('aria-pressed',btn.getAttribute('aria-pressed')!=='true');sres()};sb.appendChild(btn)});
+function sres(){const n=sb.querySelectorAll('[aria-pressed="true"]').length;const r=$('#signsRes');
+  if(!n){r.className='result';r.textContent='尚未勾選'}
+  else{r.className='result warn';r.textContent='勾選 '+n+' 項：建議帶長輩到神經內科或精神科「記憶門診」評估。早期發現，可治療或延緩的機會更大。'}}
+
+// ---- stopwatch ----
+let swRun=false,swStart=0,swRaf=0;
+function swTick(){$('#swT').textContent=((Date.now()-swStart)/1000).toFixed(1);swRaf=requestAnimationFrame(swTick)}
+$('#swB').onclick=()=>{const res=$('#swRes');
+  if(!swRun){swStart=Date.now();swRun=true;$('#swB').textContent='完成 5 次，停止';res.hidden=true;swTick()}
+  else{swRun=false;cancelAnimationFrame(swRaf);const s=(Date.now()-swStart)/1000;$('#swT').textContent=s.toFixed(1);$('#swB').textContent='再測一次';res.hidden=false;
+    if(s<=14){res.className='result';res.textContent=s.toFixed(1)+' 秒：下肢肌力在合理範圍，繼續保持運動。'}
+    else{res.className='result warn';res.textContent=s.toFixed(1)+' 秒：超過 14 秒，建議做進一步的行動能力評估。'}}};
+$('#swR').onclick=()=>{swRun=false;cancelAnimationFrame(swRaf);$('#swT').textContent='0.0';$('#swB').textContent='開始計時';$('#swRes').hidden=true};
+
+// ---- activity cards ----
+const ACTS=[['摺衣服','分類、手部精細動作','只摺毛巾，或把襪子配對','分家人衣物、摺好放回各自衣櫃'],['擇菜備料','多步驟計畫、專注力','洗菜、剝豌豆一種工作','照順序完成一道熟悉的家常菜'],['澆花散步','定向感、耐力、社交','陪他到陽台澆固定幾盆','自己走到巷口買報紙、跟鄰居打招呼'],['看老照片','回憶、語言表達','一張照片聊一件事','排出年代順序，說出家族故事']];
+const ab=$('#acts');
+ACTS.forEach(([t,g,dn,up])=>{const b=document.createElement('button');b.className='card flip';b.setAttribute('aria-pressed','false');
+  b.innerHTML='<span class="tag"></span><h3></h3><span class="front-hint">點我看難度調整 →</span><div class="back lvl"><b class="am">降階</b><span class="d"></span><b class="hl">升階</b><span class="u"></span></div>';
+  b.querySelector('.tag').textContent=g;b.querySelector('h3').textContent=t;b.querySelector('.d').textContent=dn;b.querySelector('.u').textContent=up;
+  b.onclick=()=>b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');ab.appendChild(b)});
+
+// ---- quiz ----
+const FB=['爭辯對錯會讓他更焦慮。對他來說，「家」可能是童年的家，或是一種安心的感覺。','先接住情緒，再轉移注意力。黃昏時段容易不安，可以開燈、陪他做熟悉的事。','命令和限制容易引發衝突。試著了解他想去哪裡、想找誰。'];
+$$('#quiz button').forEach((b,k)=>b.onclick=()=>{$$('#quiz button').forEach(x=>x.classList.remove('ok','no'));b.classList.add(b.dataset.ok==='1'?'ok':'no');
+  $('#quizFb').textContent=(b.dataset.ok==='1'?'很好。':'可以再想想。')+FB[k]});
+
+// ---- hotlines ----
+const HOT=[['1966','長照專線','申請長照評估與服務'],['0800-474-580','失智關懷專線','失智症照顧諮詢'],['0800-507-272','家庭照顧者關懷專線','照顧壓力、喘息與支持'],['1925','安心專線','24 小時心理支持']];
+const hb=$('#hot');
+HOT.forEach(([n,t,d])=>{const c=document.createElement('div');c.className='card hot';c.innerHTML='<span class="tel"></span><h3></h3><p class="small"></p><button class="copy">複製號碼</button>';
+  c.querySelector('.tel').textContent=n;c.querySelector('h3').textContent=t;c.querySelector('p').textContent=d;
+  c.querySelector('.copy').onclick=()=>{const done=()=>toast('已複製 '+n);
+    try{navigator.clipboard.writeText(n).then(done,()=>sel(c))}catch(e){sel(c)}};hb.appendChild(c)});
+function sel(c){const r=document.createRange();r.selectNodeContents(c.querySelector('.tel'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('已選取號碼，請長按或按 ⌘C 複製')}
+
+// ---- warm-up quizzes ----
+$$('[data-quiz]').forEach(qz=>{
+  const opts=[...qz.querySelectorAll('.qopt')], ans=qz.parentElement.querySelector('.ans');
+  opts.forEach(b=>b.addEventListener('click',()=>{
+    if(qz.classList.contains('done'))return;
+    qz.classList.add('done');
+    opts.forEach(o=>{
+      if(o.dataset.correct==='1')o.classList.add('right');
+      else if(o===b)o.classList.add('wrong');
+      else o.classList.add('dim');
+      if(o.dataset.why){const s=document.createElement('span');s.className='why';s.textContent=o.dataset.why;o.lastChild.after(s)}
+    });
+    toast(b.dataset.correct==='1'?'答對了！':'差一點，正確答案已標示');
+    ans.hidden=false;
+  }));
+});
+$$('[data-more]').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById(b.dataset.more);t.hidden=false;b.hidden=true;t.scrollIntoView({behavior:'smooth',block:'nearest'})}));
+
+// ---- Lancet 14 risk factors ----
+const DZ=[['聽力損失','m',7,'聽不清楚就去耳鼻喉科、驗配助聽器，戴了要每天戴；工作或耳機避免長時間噪音。這是排名第一、也最容易被忽略的一項。'],
+['壞膽固醇過高','m',7,'40 歲起定期驗血脂，LDL 偏高先調整飲食（少油炸、少紅肉），醫師建議用藥就規律吃。'],
+['教育程度較低','e',5,'早年的事改不了，但「認知存款」可以一直存：中老年持續學新東西，語言、樂器、手機新功能都算。'],
+['社交孤立','l',5,'退休後別只待在家。每週固定的聚會、社區據點、志工或宗教活動，讓長輩有地方去、有人等他。'],
+['憂鬱','m',3,'心情低落、提不起勁超過兩週，就找醫師或撥 1925 安心專線。治療憂鬱也是保護大腦。'],
+['腦部外傷','m',3,'騎車戴安全帽、運動戴護具；長輩居家防跌（扶手、夜燈、止滑），避免頭部撞擊。'],
+['空氣污染','l',3,'空品差時改在室內運動，家中用清淨機，減少燒香與廚房油煙。'],
+['缺乏運動','m',2,'每週 150 分鐘中等強度運動，加上肌力訓練。走路、爬樓梯、陪孩子打球都算。'],
+['糖尿病','m',2,'少喝含糖飲料，定期驗血糖；已經是糖尿病就把血糖控制好。'],
+['吸菸','m',2,'任何年齡戒菸都有效。可利用各醫院戒菸門診與戒菸專線。'],
+['高血壓','m',2,'40 歲起把收縮壓控制在 130 以下。在家量血壓用「722」：連續 7 天、早晚 2 次、每次量 2 遍。'],
+['視力損失（未矯正）','l',2,'每年檢查眼睛，白內障該開就開，配合適的眼鏡。看得清楚，才願意出門、閱讀、社交。'],
+['肥胖','m',1,'腰圍是簡單指標：男性 90 公分、女性 80 公分以下。'],
+['過量飲酒','m',1,'少喝，避免每週大量飲酒；聚餐不勸酒、不拚酒。']];
+const dzBox=$('#dz');
+DZ.forEach(([n,s,p,tip],k)=>{const b=document.createElement('button');b.className='dzb '+s;b.setAttribute('aria-pressed','false');
+  b.innerHTML='<span class="r">'+(k+1)+'</span><span class="n"></span><span class="b"><i style="width:'+(p/7*100)+'%"></i></span><span class="p">'+p+'%</span>';
+  b.querySelector('.n').textContent=n;
+  b.onclick=()=>{[...dzBox.children].forEach(x=>x.setAttribute('aria-pressed',x===b));$('#dzTip').innerHTML='<b></b>';$('#dzTip b').textContent=n+'（'+p+'%）：';$('#dzTip').append(tip)};
+  dzBox.appendChild(b)});
+
+// ---- ICOPE ----
+const IC=[['認知','記得三樣東西嗎？','說出三個詞（例如：鉛筆、汽車、蘋果），聊幾分鐘後再問；或問今天幾月幾日、現在在哪裡。','到記憶門診評估；多參與社交、學新事物。'],
+['行動','椅子坐站 5 次，14 秒內完成嗎？','雙手交叉胸前，連續從椅子站起坐下 5 次（前面的投影片可計時）。','做肌力與平衡訓練，評估跌倒風險，必要時用長照居家復能。'],
+['營養','體重掉了、胃口變差嗎？','過去 3 個月沒有刻意減重，體重卻減輕 3 公斤以上；或常常食慾不好。','檢查牙口與吞嚥，增加蛋白質（蛋、豆、魚），必要時找營養師。'],
+['視力','看遠、看近有困難嗎？','看遠處、看近處或閱讀時有困難（戴著原本的眼鏡）。','眼科檢查，白內障、老花及早處理。'],
+['聽力','聽得清楚悄悄話嗎？','在長輩耳後輕聲說話或搓手指，聽不清楚就算異常。','耳鼻喉科檢查、評估助聽器。也是預防失智的第一名因子。'],
+['情緒','心情低落、沒興趣嗎？','過去兩週常覺得心情低落、沮喪，或做事情提不起興趣。','多陪伴、安排喜歡的活動；持續兩週以上就就醫。']];
+const icBox=$('#icope');
+IC.forEach(([d,q,how,act])=>{const b=document.createElement('button');b.className='ic';b.setAttribute('aria-pressed','false');
+  b.innerHTML='<span class="ich"><h3></h3><span class="st">正常</span></span><b class="q"></b><span class="small how"></span><span class="act"></span>';
+  b.querySelector('h3').textContent=d;b.querySelector('.q').textContent=q;b.querySelector('.how').textContent=how;b.querySelector('.act').textContent='→ '+act;
+  b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);b.querySelector('.st').textContent=on?'有狀況':'正常';icRes()};icBox.appendChild(b)});
+function icRes(){const n=icBox.querySelectorAll('[aria-pressed="true"]').length,r=$('#icopeRes');
+  if(!n){r.className='result';r.textContent='尚未勾選：全部正常，明年再測一次。'}
+  else{r.className='result warn';r.textContent=n+' 項有狀況：衰弱是可以逆轉的。帶長輩到社區據點、衛生所或醫院做進一步評估，越早介入越有機會恢復。'}}
+
+// ---- assistive copay calc ----
+let atRate=0.7;
+function atCalc(){
+  const price=Math.max(0,+$('#atPrice').value||0), cap=Math.min(40000,Math.max(0,+$('#atCap').value||0));
+  const sub=Math.min(price,cap)*atRate, self=price-sub, pct=price?sub/price:0;
+  $('#atSub').textContent=fmt(sub)+' 元'; $('#atSelf').textContent=fmt(self)+' 元'; $('#atPct').textContent=Math.round(pct*100)+'%';
+  $('#atSplit .sub').style.width=(pct*100)+'%'; $('#atSplit .self').style.width=((1-pct)*100)+'%';
+  $('#atSplit').setAttribute('aria-label','政府補助 '+Math.round(pct*100)+'%，自付 '+Math.round((1-pct)*100)+'%');
+  $('#atMsg').textContent=price>cap?'報價超過給付上限的部分，全部由家屬自付。建議先請評估人員把「必要」和「想要」分開。':'報價在上限內，就是單純的部分負擔。';
+}
+['#atPrice','#atCap'].forEach(s=>$(s).addEventListener('input',atCalc));
+$('#atIdn').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;atRate=+b.dataset.v;[...$('#atIdn').children].forEach(x=>x.setAttribute('aria-pressed',x===b));atCalc()});
+atCalc();
+
+// ---- QR codes ----
+$$('[data-qr]').forEach(el=>{try{new QRCode(el,{text:el.dataset.qr,width:256,height:256,colorDark:'#15231E',colorLight:'#FFFFFF',correctLevel:QRCode.CorrectLevel.M})}catch(e){el.remove()}});
+
+// start
+const m=/^#s(\d+)$/.exec(location.hash);
+go(m?(+m[1]-1):0,!!m);
+})();
+</script>
+
+</body>
+</html>
