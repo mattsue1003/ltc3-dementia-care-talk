@@ -256,6 +256,13 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .sl-legs{display:grid;gap:10px}
 .sl-legs>div{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 
+.cost{display:grid;gap:6px;margin-top:6px;border-top:1px dashed var(--line);padding-top:8px}
+.cost>div{display:grid;grid-template-columns:4.5em minmax(0,1fr);column-gap:8px;font-size:var(--fs-small);line-height:1.35}
+.cost span{grid-row:span 2;color:var(--muted)}
+.cost b{font-weight:700}
+.cost b.am{color:var(--amber)}
+.cost em{font-style:normal;color:var(--muted);font-size:.85em}
+
 /* speaker */
 .speaker{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,52px);align-items:center}
 @media (max-width:760px){.speaker{grid-template-columns:1fr}}
@@ -526,8 +533,8 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   <div class="tl" role="list">
    <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
    <a role="listitem" style="grid-column:span 15" data-go="22"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
-   <a role="listitem" style="grid-column:span 25" data-go="35"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
-   <a role="listitem" style="grid-column:span 10" data-go="57"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+   <a role="listitem" style="grid-column:span 25" data-go="37"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="59"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
   </div>
   <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
  </div>
@@ -1166,6 +1173,35 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
  </div>
 </section>
 
+<!-- Dementia smart insole -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="失智防走失：定位鞋墊">
+ <div class="inner">
+  <div class="eyebrow">失智症 · 智慧科技輔具</div>
+  <h2>失智防走失：定位鞋墊也能用長照租</h2>
+  <div class="grid g2" style="align-items:start">
+   <div class="card">
+    <span class="tag">已確認</span>
+    <ul class="clean small">
+     <li><b>AI 智慧定位鞋墊</b>列入 2026 年 7 月首批 17 件智慧科技輔具，屬「安全看視類」（EI05）</li>
+     <li>走第 2 組額度（3 年 6 萬元），<b>只能租賃</b>；租金由特約廠商訂定、報縣市備查，廠商負責維修、清消與回收</li>
+     <li>穿在鞋裡不易被拿掉；家屬用手機看即時位置，走出設定範圍就通知</li>
+     <li>失智症者經評估長照 2 級以上即可申請；已有縣市與廠商簽約（如苗栗縣）</li>
+    </ul>
+   </div>
+   <div class="card">
+    <span class="tag am">「以租代買」？要先問清楚</span>
+    <p class="small">目前<b>查不到</b>政府規定「租金累計超過成本就能買斷」。這屬於特約廠商與家屬之間的租約條件，簽約前請直接問：</p>
+    <ul class="clean small">
+     <li>每月租金多少？租多久後可買斷、買斷價多少？</li>
+     <li>買斷後還有沒有維修、門號或平台月費？</li>
+    </ul>
+    <p class="small"><b>算算看：</b>鞋墊建議售價約 3,960 元。若只需要這一項，自費購買可能比改選第 2 組更划算，傳統輔具的 4 萬元額度還能留給輪椅、扶手。</p>
+   </div>
+  </div>
+  <p class="small">也可同時申請各縣市免費的失智「愛心手鍊」與指紋建檔。資料來源：衛福部首批智慧輔具公告、縣市新聞稿；品項與價格以 1966 及特約廠商為準。</p>
+ </div>
+</section>
+
 <!-- AT-4 disability vs LTC -->
 <section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="身障資源與長照搭配">
  <div class="inner">
@@ -1192,15 +1228,31 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
  </div>
 </section>
 
+<!-- Assistive DB -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="長照輔具資料庫">
+ <div class="inner">
+  <div class="eyebrow">FREE TOOL · 手機掃描</div>
+  <h2>不知道要買什麼輔具？先查輔具資料庫</h2>
+  <div class="res2">
+   <figure class="r-img"><img src="img/aids-db.jpg" alt="長照輔具資料庫網頁畫面：依功能、GMFCS、食衣住行樂查詢輔具"></figure>
+   <div class="r-info">
+    <p class="lead"><b>109 項輔具</b>，依功能與食、衣、住、行、樂分類查詢，看用途、適合誰；再到補助查詢頁，看長照與身障可以補多少。</p>
+    <a class="qr-card" href="https://mattsue1003.github.io/long-term-care-assistive-devices-database/" target="_blank" rel="noopener"><div class="qr" data-qr="https://mattsue1003.github.io/long-term-care-assistive-devices-database/" aria-hidden="true"></div><div><b>長照輔具資料庫</b><span class="u">mattsue1003.github.io/long-term-care-assistive-devices-database</span></div></a>
+    <a class="rl" href="https://mattsue1003.github.io/longtermcare/" target="_blank" rel="noopener"><b>輔具補助查詢（生活魔法師）</b><span>長照、身障補助方向</span><i>↗</i></a>
+   </div>
+  </div>
+ </div>
+</section>
+
 <!-- 11 Combination -->
 <section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="居家、社區、機構組合戰術">
  <div class="inner">
   <div class="eyebrow">STRATEGY MAP</div>
   <h2>居家、社區、機構的組合戰術</h2>
   <div class="grid g3">
-   <div class="card"><span class="tag">居家</span><h3>長輩在自己家</h3><ul class="clean small"><li>居家服務：沐浴、備餐、陪同</li><li>居家復能：治療師到府教功能訓練</li><li>居家護理、居家醫療</li></ul></div>
-   <div class="card"><span class="tag">社區</span><h3>白天出門，晚上回家</h3><ul class="clean small"><li>日間照顧中心、小規模多機能</li><li>家庭托顧</li><li>巷弄長照站、失智據點</li></ul></div>
-   <div class="card"><span class="tag am">住宿</span><h3>需要 24 小時照顧</h3><ul class="clean small"><li>長照住宿機構、護理之家</li><li>失智團體家屋</li><li>住宿補助 2026 年起最高 18 萬元/年（每月 1.5 萬）</li></ul></div>
+   <div class="card"><span class="tag">居家</span><h3>長輩在自己家</h3><ul class="clean small"><li>居家服務：沐浴、備餐、陪同</li><li>居家復能：治療師到府教功能訓練</li><li>居家護理、居家醫療</li></ul><div class="cost"><div><span>使用人數</span><b>照顧服務 39.5 萬人</b><em>2024，含居家、日照、家托</em></div><div><span>原本花費</span><b>平均約 7,900 元／月</b><em>長照服務定價，每人每年 9.5 萬</em></div><div><span>補助後</span><b class="am">一般戶約 1,300 元／月</b><em>自付 16%；超出額度部分自費</em></div></div></div>
+   <div class="card"><span class="tag">社區</span><h3>白天出門，晚上回家</h3><ul class="clean small"><li>日間照顧中心、小規模多機能</li><li>家庭托顧</li><li>巷弄長照站、失智據點</li></ul><div class="cost"><div><span>服務據點</span><b>日照 951 家、小規機 163 家</b><em>2024；日照平均使用率約 75%</em></div><div><span>原本花費</span><b>約 1.5–2.5 萬元／月</b><em>常見自費行情，含餐費</em></div><div><span>補助後</span><b class="am">約 0.5–1.2 萬元／月</b><em>餐費、交通自付</em></div></div></div>
+   <div class="card"><span class="tag am">住宿</span><h3>需要 24 小時照顧</h3><ul class="clean small"><li>長照住宿機構、護理之家</li><li>失智團體家屋</li><li>住宿補助 2026 年起最高 18 萬元/年（每月 1.5 萬）</li></ul><div class="cost"><div><span>使用人數</span><b>11.9 萬床，使用率 83%</b><em>2024，1,687 家，約 9.8 萬人入住</em></div><div><span>原本花費</span><b>約 3.5–6 萬元／月</b><em>北部護理之家 4–6 萬</em></div><div><span>補助後</span><b class="am">約 2–4.5 萬元／月</b><em>扣每月最高 1.5 萬補助</em></div></div></div>
   </div>
   <div class="grid g3">
    <div class="note"><b>雙薪上班族：</b>日照 ＋ 交通接送 ＋ 週末喘息</div>
@@ -1215,10 +1267,11 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
  <div class="inner">
   <div class="eyebrow">AT WORK</div>
   <h2>在職照顧者的工具箱</h2>
-  <div class="grid g3">
-   <div class="card"><span class="tag">法定權益</span><h3>家庭照顧假 7 天</h3><p class="small">家人需要照顧時可請，每年 7 日，併入事假計算。</p></div>
+  <div class="grid g4">
+   <div class="card"><span class="tag">法定權益</span><h3>家庭照顧假 7 天</h3><p class="small"><b>條件：</b>家人（含孩子、父母、配偶等家屬）要打預防針、生重病或發生重大事故，需要你親自照顧。</p><p class="small">每年 7 天，併入事假（通常不給薪）；雇主<b>不得拒絕</b>，也不得因此扣全勤、影響考績。必要時公司可要求證明，如診斷書或就醫、接種紀錄。</p></div>
    <div class="card"><span class="tag">彈性安排</span><h3>先跟主管談</h3><p class="small">陪診、評估日、出院日先排好，比臨時請假更好協調。</p></div>
    <div class="card"><span class="tag">情緒支持</span><h3>不是只有你</h3><p class="small">家庭照顧者關懷專線、照顧者支持據點，提供諮詢與課程。</p></div>
+   <div class="card" style="border-color:var(--pine)"><span class="tag">照顧不離職</span><h3>長照 3.0 ＋ 喘息</h3><p class="small">白天交給居家服務或日照；喘息每年約 14–21 天，外看家庭最多約 52 天；住院有住院整合照護，不必請假陪病。</p></div>
   </div>
   <p class="note">建議做法：把「照顧日曆」和工作行事曆放在一起，提早 2 週標出回診、評估與喘息日期。</p>
  </div>
