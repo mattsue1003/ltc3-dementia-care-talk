@@ -9,26 +9,36 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
 /* Layout: one full-screen slide at a time, a "care strategy map" look — pine green for routes/resources, amber for warnings and key numbers; bottom control bar sized for thumbs. */
 :root{
   --bg:#F7FBFA; --surface:#FFFFFF; --ink:#1A2B27; --muted:#5A6D67; --line:#DCE8E4;
   --pine:#12896B; --pine-soft:#E2F5EF; --amber:#C27C00; --amber-soft:#FFF3D6; --alert:#C2452B; --alert-soft:#FDE8E3;
   color-scheme:light;
-  --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --f-display:"Chiron GoRound TC","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
   --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   --f-data:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   --bar-h:64px;
-  --fs-hero:clamp(2rem,4.6vw + .4rem,4.4rem);
-  --fs-h:clamp(1.55rem,2.6vw + .5rem,2.9rem);
-  --fs-lead:clamp(1.02rem,.9vw + .7rem,1.4rem);
-  --fs-body:clamp(.95rem,.55vw + .72rem,1.18rem);
-  --fs-small:clamp(.78rem,.3vw + .66rem,.92rem);
+
 }
+/* type scale follows a 1280×720 projection canvas: 1 --px = 1 canvas pixel; --k shrinks dense slides */
+:root,.slide{
+  --k:1;
+  --px:calc(min(calc(100vw / 1280), calc((100vh - 64px) / 720)) * var(--k));
+  --fs-hero:max(2rem, calc(66 * var(--px)));
+  --fs-h:max(1.6rem, calc(52 * var(--px)));
+  --fs-h3:max(1.1rem, calc(30 * var(--px)));
+  --fs-lead:max(1.05rem, calc(26 * var(--px)));
+  --fs-body:max(1rem, calc(24 * var(--px)));
+  --fs-small:max(.9rem, calc(20 * var(--px)));
+  --fs-eyebrow:max(.78rem, calc(18 * var(--px)));
+}
+.slide.fit1{--k:.88} .slide.fit2{--k:.77} .slide.fit3{--k:.68}
+.slide{font-size:var(--fs-body)}
 
 html,body{height:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--fs-body);line-height:1.65;overflow:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--fs-body);line-height:1.6;overflow:hidden;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
 
@@ -43,18 +53,18 @@ button{font:inherit;color:inherit}
 .slide.is-active{visibility:visible;opacity:1;transform:none;transition:opacity .35s ease,transform .35s ease}
 .slide.is-before{transform:translateX(-40px)}
 @media (prefers-reduced-motion: reduce){.slide,.slide.is-active,.progress i{transition:none}}
-.inner{box-sizing:border-box;min-height:100%;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vh,28px);
-  padding-block:clamp(22px,5vh,56px);padding-left:max(16px,env(safe-area-inset-left,0px),4vw);padding-right:max(16px,env(safe-area-inset-right,0px),4vw)}
+.inner{box-sizing:border-box;min-height:100%;max-width:calc(1280 * var(--px));margin:0 auto;display:flex;flex-direction:column;justify-content:center;gap:max(14px, calc(24 * var(--px)));
+  padding-block:max(20px, calc(40 * var(--px)));padding-left:max(16px,env(safe-area-inset-left,0px),calc(64 * var(--px)));padding-right:max(16px,env(safe-area-inset-right,0px),calc(64 * var(--px)))}
 
 /* type */
-.eyebrow{font-family:var(--f-data);font-size:var(--fs-small);letter-spacing:.08em;color:var(--pine);display:flex;gap:.6em;align-items:center;flex-wrap:wrap}
+.eyebrow{font-family:var(--f-data);font-weight:600;font-size:var(--fs-eyebrow);letter-spacing:.12em;color:var(--muted);display:flex;gap:.6em;align-items:center;flex-wrap:wrap}
 .eyebrow b{background:var(--pine);color:var(--bg);padding:.1em .55em;border-radius:4px;font-weight:600}
 h1,h2,h3{margin:0;text-wrap:balance}
 h1{font-family:var(--f-display);font-weight:900;font-size:var(--fs-hero);line-height:1.18;letter-spacing:.01em}
-h2{font-family:var(--f-display);font-weight:900;font-size:var(--fs-h);line-height:1.25}
-h3{font-size:calc(var(--fs-body) * 1.08);font-weight:700;line-height:1.4}
+h2{font-family:var(--f-display);font-weight:900;font-size:var(--fs-h);line-height:1.18;letter-spacing:.01em}
+h3{font-family:var(--f-display);font-size:var(--fs-h3);font-weight:700;line-height:1.3}
 p{margin:0}
-.lead{font-size:var(--fs-lead);color:var(--muted);max-width:42em}
+.lead{font-size:var(--fs-lead);color:var(--muted);line-height:1.55;max-width:44em}
 .small{font-size:var(--fs-small);color:var(--muted)}
 .hl{color:var(--pine)} .am{color:var(--amber)}
 .num{font-family:var(--f-data);font-variant-numeric:tabular-nums}
@@ -70,8 +80,8 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.45em;he
 @media (max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:1fr}}
 @media (max-width:620px){.g2,.g4{grid-template-columns:1fr}}
 .grid>*{min-width:0}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(14px,1.6vw,22px);display:flex;flex-direction:column;gap:.5em}
-.tag{display:inline-block;font-family:var(--f-data);font-size:var(--fs-small);padding:.05em .55em;border-radius:4px;background:var(--pine-soft);color:var(--pine);font-weight:600;align-self:flex-start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:max(14px, calc(20 * var(--px)));padding:max(14px, calc(24 * var(--px)));display:flex;flex-direction:column;gap:.5em}
+.tag{display:inline-block;font-family:var(--f-body);font-size:var(--fs-small);padding:.15em .7em;border-radius:999px;background:var(--pine-soft);color:var(--pine);font-weight:600;align-self:flex-start}
 .tag.am{background:var(--amber-soft);color:var(--amber)}
 .tag.al{background:var(--alert-soft);color:var(--alert)}
 .note{border-left:4px solid var(--amber);background:var(--amber-soft);padding:.7em 1em;border-radius:0 10px 10px 0;font-size:var(--fs-small);color:var(--ink)}
@@ -80,6 +90,7 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.45em;he
 .cover-meta{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:var(--fs-body)}
 .cover-meta div{display:flex;flex-direction:column}
 .cover-meta span{font-family:var(--f-data);font-size:var(--fs-small);color:var(--muted);letter-spacing:.06em}
+.slide:first-child h1 .hl{color:var(--ink);background:linear-gradient(transparent 62%, #F6D9A3 62%)}
 .route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
 .route .stop{background:var(--surface);border:1.5px solid var(--pine);color:var(--pine);border-radius:999px;padding:.3em .9em;font-weight:700;font-size:var(--fs-small)}
 .route .dash{flex:0 0 24px;height:0;border-top:2px dashed var(--pine);opacity:.6}
@@ -96,7 +107,7 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.45em;he
 
 /* big stats */
 .stat{display:flex;flex-direction:column;gap:.35em}
-.stat .v{font-family:var(--f-display);font-weight:900;font-size:clamp(2.1rem,3.6vw,3.4rem);line-height:1;color:var(--pine)}
+.stat .v{font-family:var(--f-display);font-weight:900;font-size:max(2.1rem, calc(60 * var(--px)));line-height:1;color:var(--pine)}
 .stat .v small{font-size:.42em;font-family:var(--f-body);font-weight:700;margin-left:.15em}
 .stat.am .v{color:var(--amber)}
 
@@ -130,7 +141,7 @@ table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:var(--fs
 @media (max-width:520px){.steps{grid-template-columns:1fr}}
 .steps .card{position:relative}
 .steps .n{font-family:var(--f-data);font-weight:600;color:var(--bg);background:var(--pine);width:2em;height:2em;border-radius:50%;display:grid;place-items:center;font-size:var(--fs-small)}
-.big-phone{font-family:var(--f-display);font-weight:900;font-size:clamp(2.6rem,6vw,4.6rem);color:var(--pine);line-height:1}
+.big-phone{font-family:var(--f-display);font-weight:900;font-size:max(2.6rem, calc(96 * var(--px)));color:var(--pine);line-height:1}
 
 /* calculator */
 .seg{display:flex;flex-wrap:wrap;gap:6px}
@@ -172,7 +183,7 @@ table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:var(--fs
 .lvl b{font-family:var(--f-data)}
 
 /* quiz */
-.quote{font-family:var(--f-display);font-weight:900;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.3}
+.quote{font-family:var(--f-display);font-weight:900;font-size:max(1.6rem, calc(44 * var(--px)));line-height:1.3}
 .opts{display:grid;gap:8px}
 .opts button{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:.75em 1em;cursor:pointer;min-height:48px}
 .opts button.ok{border-color:var(--pine);background:var(--pine-soft)}
@@ -368,7 +379,8 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .cmp.two td:last-child{background:var(--pine-soft)}
 
 /* research ranking */
-.rank{display:grid;gap:10px}
+.rank{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.rank{grid-template-columns:1fr}}
 .rk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
 .rk .no{width:2em;height:2em;border-radius:50%;display:grid;place-items:center;background:var(--pine);color:var(--surface);font-family:var(--f-data);font-weight:600}
 .rk-main{display:grid;gap:4px;min-width:0}
@@ -382,7 +394,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .qz.q3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:620px){.qz,.qz.q3{grid-template-columns:1fr}}
 .qopt{display:flex;align-items:center;gap:.7em;text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:.9em 1.1em;min-height:64px;cursor:pointer;
-  font-family:var(--f-display);font-weight:900;font-size:clamp(1.25rem,2.2vw,1.9rem);transition:border-color .2s,background .2s}
+  font-family:var(--f-display);font-weight:900;font-size:max(1.25rem, calc(34 * var(--px)));transition:border-color .2s,background .2s}
 .qopt:hover{border-color:var(--pine)}
 .qopt .qk{flex:0 0 auto;width:1.7em;height:1.7em;border-radius:50%;display:grid;place-items:center;background:var(--pine-soft);color:var(--pine);font-family:var(--f-data);font-size:.6em}
 .qopt.right{border-color:var(--pine);background:var(--pine-soft)}
@@ -705,6 +717,8 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
  <div class="inner">
   <div class="eyebrow">Q4 延伸 · 國際比較</div>
   <h2>其實，歐美的不健康餘命比臺灣更長</h2>
+  <div class="grid g2" style="align-items:start">
+   <div class="grid" style="gap:10px">
   <div class="rchart" role="img" aria-label="不健康餘命比較：臺灣約7.4年，全球平均9.6年，美國12.4年">
    <div class="rrow"><div class="lab">臺灣<em>衛福部，2022</em></div><div class="track t14"><div class="r" style="left:0;width:52.9%"><span>7.4 年</span></div></div></div>
    <div class="rrow"><div class="lab">全球平均<em>183 國，WHO 資料</em></div><div class="track t14"><div class="r am" style="left:0;width:68.6%"><span>9.6 年</span></div></div></div>
@@ -712,9 +726,11 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
    <div class="axis"><span></span><div><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div>
   </div>
   <p class="small">澳洲、紐西蘭、英國、挪威也是差距最大的國家之一（Mayo Clinic 研究，JAMA Network Open 2024）。各國計算方法不同，數字僅供對照。</p>
-  <div class="grid g2">
+   </div>
+  <div class="grid" style="gap:10px">
    <div class="card"><span class="tag al">真實情況</span><h3>「北歐 7 天」不是統計數字</h3><p class="small">沒有任何官方統計算過「北歐臥床天數」。這個說法來自日本醫師夫婦宮本顯二、宮本禮子到瑞典等國參訪後的觀察（日文原書《歐美沒有臥床老人》，中文版《不在病床上說再見》）。這是觀察和倡議，不是統計；在臺灣被拿來和「不健康餘命 7–8 年」對照，才變成「7 年對 7 天」。實際上，挪威、瑞典的不健康餘命約 11–12 年（WHO 2021），並不比臺灣短。</p></div>
    <div class="card"><span class="tag">他們做對的事</span><h3>失能、失智了，生活品質仍然被重視</h3><p class="small">失智長輩仍被鼓勵出門、做家事、決定自己的生活；每天離床、用輔具自己動。到了生命末期，吃不下就不插鼻胃管、不勉強延長，尊重自然善終。所以「長期臥床」的時間很短，是照護方式的結果，不是因為他們比較不會生病。</p></div>
+  </div>
   </div>
  </div>
 </section>
@@ -1630,6 +1646,21 @@ $$('[data-count]').forEach(set=>{
 
 // ---- QR codes ----
 $$('[data-qr]').forEach(el=>{try{new QRCode(el,{text:el.dataset.qr,width:256,height:256,colorDark:'#15231E',colorLight:'#FFFFFF',correctLevel:QRCode.CorrectLevel.M})}catch(e){el.remove()}});
+
+// ---- auto-fit dense slides ----
+function fitAll(){
+  slides.forEach(s=>{
+    s.classList.remove('fit1','fit2','fit3');
+    if(innerWidth<760)return;
+    for(let k=1;k<=3;k++){
+      if(s.scrollHeight-s.clientHeight<=2)break;
+      s.classList.remove('fit1','fit2','fit3');s.classList.add('fit'+k);
+    }
+  });
+}
+let fitT;addEventListener('resize',()=>{clearTimeout(fitT);fitT=setTimeout(fitAll,150)});
+(document.fonts?document.fonts.ready:Promise.resolve()).then(fitAll);
+fitAll();
 
 // start
 const m=/^#s(\d+)$/.exec(location.hash);
