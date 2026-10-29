@@ -252,6 +252,10 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .cmp.ins td:first-child{white-space:nowrap;padding-right:8px}
 .cmp.ins td:last-child{background:transparent}
 
+.sl-steps{margin:0;padding-left:1.3em;display:grid;gap:.35em}
+.sl-legs{display:grid;gap:10px}
+.sl-legs>div{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+
 /* speaker */
 .speaker{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,52px);align-items:center}
 @media (max-width:760px){.speaker{grid-template-columns:1fr}}
@@ -521,9 +525,9 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   <h2>今天的 60 分鐘</h2>
   <div class="tl" role="list">
    <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
-   <a role="listitem" style="grid-column:span 15" data-go="21"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
-   <a role="listitem" style="grid-column:span 25" data-go="34"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
-   <a role="listitem" style="grid-column:span 10" data-go="56"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+   <a role="listitem" style="grid-column:span 15" data-go="22"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
+   <a role="listitem" style="grid-column:span 25" data-go="35"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="57"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
   </div>
   <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
  </div>
@@ -824,6 +828,39 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
  </div>
 </section>
 
+<!-- Single-leg stand -->
+<section class="slide" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="單腳坐到站測試">
+ <div class="inner">
+  <div class="eyebrow">INTERACTIVE · 現場一起做</div>
+  <h2>單腳坐到站：你的腿，撐得住未來嗎？</h2>
+  <div class="grid g2" style="align-items:start">
+   <div class="card">
+    <span class="tag">怎麼做</span>
+    <ol class="sl-steps small">
+     <li>坐在約 40 公分高、不會滑動的椅子前半部，雙手交叉抱胸</li>
+     <li>抬起一隻腳離地，只用另一隻腳站起來</li>
+     <li>站直後維持 3 秒，不晃、不扶</li>
+     <li>換腳再做一次</li>
+    </ol>
+    <p class="small"><b class="am">安全第一：</b>旁邊要有人或扶手；膝蓋痛、頭暈、平衡不好的人改用雙腳做，不要勉強。</p>
+   </div>
+   <div class="card">
+    <span class="tag am">你的結果</span>
+    <div class="sl-legs">
+     <div><b>左腳</b><div class="seg" data-leg="L"><button data-v="1" aria-pressed="false">做得到</button><button data-v="0" aria-pressed="false">做不到</button></div></div>
+     <div><b>右腳</b><div class="seg" data-leg="R"><button data-v="1" aria-pressed="false">做得到</button><button data-v="0" aria-pressed="false">做不到</button></div></div>
+    </div>
+    <div class="result" id="slRes">兩腳都試試看，再點選結果。</div>
+   </div>
+  </div>
+  <div class="grid g2">
+   <div class="note"><b>新加坡：</b>新加坡老年醫學會推動「#Stand4Strength」單腳站起挑戰，指出 55 歲以上每 2 人就有 1 人衰弱或衰弱前期；做不到的人，70 歲後無法行走的風險較高。</div>
+   <div class="note"><b>日本：</b>日本整形外科學會「運動障礙症候群（ロコモ）」標準測試：任一腳無法從 40 公分高單腳站起，代表移動能力已開始退化。</div>
+  </div>
+  <p class="small">此為篩檢，不是診斷。新加坡的挑戰為衛教活動，未附正式研究；做不到請加強肌力訓練，並找醫師或物理治療師評估。</p>
+ </div>
+</section>
+
 <!-- 5 Cost -->
 <section class="slide" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="照顧的每月成本">
  <div class="inner">
@@ -1047,6 +1084,11 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
     <button data-v="g" aria-pressed="true">一般戶</button><button data-v="m" aria-pressed="false">中低收入</button><button data-v="l" aria-pressed="false">低收入</button></div></div>
   </div>
   <div class="calc-out" id="calcOut"></div>
+  <div class="grid g3">
+   <div class="note"><b>官方：</b>2024 年長照使用者平均每人每年使用給付 <b>95,079 元</b>（約每月 7,900 元），2026 年推估 97,759 元。<span class="small">（衛福部長照十年計畫 3.0）</span></div>
+   <div class="note"><b>家庭實際花費：</b>照顧者自述每月照顧花費平均 <b>21,923 元</b>，7.6% 超過 4 萬元。<span class="small">（家總 2023 民調）</span></div>
+   <div class="note"><b>住宿機構：</b>北部護理之家一般照護費約每月 4–6 萬元，各類老人福利機構約 1.2–5.6 萬元。<span class="small">（國衛院整理 2021 年收費）</span></div>
+  </div>
   <p class="small">交通接送以臺北市（第 1 類）計算；聘有外籍看護的家庭，照顧及專業服務以專業服務為主。實際以照管中心核定為準。</p>
  </div>
 </section>
@@ -1075,14 +1117,15 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
 <section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="自付額怎麼算">
  <div class="inner">
   <div class="eyebrow">INTERACTIVE · 自付額試算</div>
-  <h2>為什麼無障礙工程，常常自己付比較多？</h2>
+  <h2>為什麼無障礙工程常常自己付比較多？</h2>
   <div class="grid g2" style="align-items:start">
    <div class="card">
     <div class="formula"><b>政府補助</b> ＝ 品項給付上限 × 補助比例<br><b>你付</b> ＝ 實際價格 − 政府補助</div>
-    <div class="fld"><label for="atPrice">廠商實際報價（元）</label><input id="atPrice" type="number" inputmode="numeric" min="0" step="500" value="120000"></div>
-    <div class="fld"><label for="atCap">可給付品項上限加總（元）</label><input id="atCap" type="number" inputmode="numeric" min="0" step="500" value="26000"></div>
+    <div class="fld"><label for="atPrice">① 無障礙工程的廠商報價（元）</label><input id="atPrice" type="number" inputmode="numeric" min="0" step="500" value="120000"></div>
+    <div class="fld"><label for="atCap">② 政府認列金額：這次工程各項目的給付上限加總（元）</label><input id="atCap" type="number" inputmode="numeric" min="0" step="500" value="26000"></div>
+    <div class="fld"><label for="atUsed">③ 3 年內已經用在輔具的額度（元）</label><input id="atUsed" type="number" inputmode="numeric" min="0" step="500" value="0"></div>
     <div class="seg" id="atIdn" role="group" aria-label="福利身分"><button data-v="0.7" aria-pressed="true">一般戶 70%</button><button data-v="0.9" aria-pressed="false">中低收 90%</button><button data-v="1" aria-pressed="false">低收 100%</button></div>
-    <p class="small">上限加總不能超過 3 年額度（第 1 組 4 萬元）。</p>
+    <p class="small" id="atLeft">輔具和無障礙共用 3 年 4 萬元：先扣掉已買輔具，剩下的才是這次工程能用的額度。</p>
    </div>
    <div class="card">
     <span class="tag am">試算結果</span>
@@ -1095,7 +1138,7 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
     <p class="small" id="atMsg"></p>
    </div>
   </div>
-  <p class="small">預設為示意：浴室改造報價 12 萬元，其中扶手（固定式每 10 公分 150 元）、防滑（3,000 元）、斜坡道（10,000 元）、門改拉門等可給付項目加總約 2.6 萬元。實際上限依品項代碼核定。</p>
+  <p class="small">預設為示意：浴室改造報價 12 萬元，扶手、防滑、斜坡道、門改拉門等可給付項目上限加總約 2.6 萬元。</p>
  </div>
 </section>
 
@@ -1796,14 +1839,15 @@ function icRes(){const n=icBox.querySelectorAll('[aria-pressed="true"]').length,
 // ---- assistive copay calc ----
 let atRate=0.7;
 function atCalc(){
-  const price=Math.max(0,+$('#atPrice').value||0), cap=Math.min(40000,Math.max(0,+$('#atCap').value||0));
+  const used=Math.min(40000,Math.max(0,+$('#atUsed').value||0)), left=40000-used, price=Math.max(0,+$('#atPrice').value||0), cap=Math.min(left,Math.max(0,+$('#atCap').value||0));
+  $('#atLeft').textContent='4 萬元額度 − 已用在輔具 '+fmt(used)+' 元 ＝ 這次工程最多可認列 '+fmt(left)+' 元。';
   const sub=Math.min(price,cap)*atRate, self=price-sub, pct=price?sub/price:0;
   $('#atSub').textContent=fmt(sub)+' 元'; $('#atSelf').textContent=fmt(self)+' 元'; $('#atPct').textContent=Math.round(pct*100)+'%';
   $('#atSplit .sub').style.width=(pct*100)+'%'; $('#atSplit .self').style.width=((1-pct)*100)+'%';
   $('#atSplit').setAttribute('aria-label','政府補助 '+Math.round(pct*100)+'%，自付 '+Math.round((1-pct)*100)+'%');
   $('#atMsg').textContent=price>cap?'報價超過給付上限的部分，全部由家屬自付。建議先請評估人員把「必要」和「想要」分開。':'報價在上限內，就是單純的部分負擔。';
 }
-['#atPrice','#atCap'].forEach(s=>$(s).addEventListener('input',atCalc));
+['#atPrice','#atCap','#atUsed'].forEach(s=>$(s).addEventListener('input',atCalc));
 $('#atIdn').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;atRate=+b.dataset.v;[...$('#atIdn').children].forEach(x=>x.setAttribute('aria-pressed',x===b));atCalc()});
 atCalc();
 
@@ -1821,6 +1865,13 @@ $$('[data-count]').forEach(set=>{
 
 // ---- QR codes ----
 $$('[data-qr]').forEach(el=>{try{new QRCode(el,{text:el.dataset.qr,width:256,height:256,colorDark:'#15231E',colorLight:'#FFFFFF',correctLevel:QRCode.CorrectLevel.M})}catch(e){el.remove()}});
+
+// ---- single-leg stand test ----
+const slv={};
+$$('[data-leg]').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;[...g.children].forEach(x=>x.setAttribute('aria-pressed',x===b));slv[g.dataset.leg]=b.dataset.v;
+  const r=$('#slRes');if(!slv.L||!slv.R){r.className='result';r.textContent='再完成另一隻腳。';return}
+  if(slv.L==='1'&&slv.R==='1'){r.className='result';r.textContent='兩腳都做得到：下肢肌力不錯，繼續保持每週 2 次以上肌力訓練。'}
+  else{r.className='result warn';r.textContent=(slv.L==='0'&&slv.R==='0'?'兩腳':'一腳')+'做不到：移動能力可能已開始退化，是衰弱與日後失能的警訊。從椅子坐站、扶椅踮腳尖開始練，並找專業人員評估。'}}));
 
 // ---- auto-fit dense slides ----
 function fitAll(){
