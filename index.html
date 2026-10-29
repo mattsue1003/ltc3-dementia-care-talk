@@ -263,6 +263,16 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .cost b.am{color:var(--amber)}
 .cost em{font-style:normal;color:var(--muted);font-size:.85em}
 
+.tool-card{display:flex;flex-direction:column;background:var(--surface);border:1.5px solid var(--line);border-radius:max(14px, calc(20 * var(--px)));overflow:hidden;text-decoration:none;color:var(--ink);transition:border-color .2s, transform .2s}
+.tool-card:hover{border-color:var(--pine);transform:translateY(-2px)}
+.tool-card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:4px solid var(--brand)}
+.tc-body{display:flex;gap:14px;align-items:center;padding:max(12px, calc(18 * var(--px)))}
+.tc-text{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.tc-text b{font-family:var(--f-display);font-size:var(--fs-h3)}
+.tc-text .u{font-family:var(--f-data);font-size:.8rem;color:var(--pine);word-break:break-all}
+.tc-body .qr{flex:none;width:max(88px, calc(118 * var(--px)));height:max(88px, calc(118 * var(--px)));padding:5px;background:#FFFFFF;border:1px solid var(--line);border-radius:8px}
+@media (max-width:620px){.tc-body .qr{display:none}}
+
 /* speaker */
 .speaker{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,52px);align-items:center}
 @media (max-width:760px){.speaker{grid-template-columns:1fr}}
@@ -534,7 +544,7 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
    <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
    <a role="listitem" style="grid-column:span 15" data-go="22"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
    <a role="listitem" style="grid-column:span 25" data-go="37"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
-   <a role="listitem" style="grid-column:span 10" data-go="61"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="62"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
   </div>
   <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
  </div>
@@ -1314,6 +1324,32 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   </div>
  </div>
 </section>
+
+<!-- Brain games -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="動動腦小工具">
+ <div class="inner">
+  <div class="eyebrow">FREE TOOL · 動動腦、出去玩、吃美食</div>
+  <h2>預防失智，從好玩開始：兩個免費小工具</h2>
+  <p class="small">對應前一頁的「社交孤立」與「認知刺激」：陪爸媽聊旅行、聊美食、一起猜歌，就是在練腦。</p>
+  <div class="grid g2" style="align-items:start">
+   <a class="tool-card" href="https://mattsue1003.github.io/taiwan-taste-island/" target="_blank" rel="noopener">
+    <img src="img/taiwan-taste-island.jpg" alt="台灣好味島：22 縣市名產與景點的 3D 小島">
+    <div class="tc-body">
+     <div class="tc-text"><b>台灣好味島</b><span class="small">走一圈台灣、吃一圈台灣！22 縣市的名產與景點做成 3D 小島，點一下就去旅行，還有任務模式猜謎闖關。</span><span class="u">mattsue1003.github.io/taiwan-taste-island</span></div>
+     <div class="qr" data-qr="https://mattsue1003.github.io/taiwan-taste-island/" aria-hidden="true"></div>
+    </div>
+   </a>
+   <a class="tool-card" href="https://mattsue1003.github.io/pop-song-guess/" target="_blank" rel="noopener">
+    <img src="img/pop-song-guess.jpg" alt="流行音樂猜歌：先播前奏，讓大家喊出歌名">
+    <div class="tc-body">
+     <div class="tc-text"><b>流行音樂猜歌 20 首</b><span class="small">先播前奏、再給提示，朋友聚會、闔家歡樂都適合，破冰、炒熱氣氛最好用。</span><span class="u">mattsue1003.github.io/pop-song-guess</span></div>
+     <div class="qr" data-qr="https://mattsue1003.github.io/pop-song-guess/" aria-hidden="true"></div>
+    </div>
+   </a>
+  </div>
+ </div>
+</section>
+
 
 <!-- Heart 1 gallery -->
 <section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="心臟血管：99% 早有警訊">
