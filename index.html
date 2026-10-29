@@ -273,6 +273,14 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .tc-body .qr{flex:none;width:max(88px, calc(118 * var(--px)));height:max(88px, calc(118 * var(--px)));padding:5px;background:#FFFFFF;border:1px solid var(--line);border-radius:8px}
 @media (max-width:620px){.tc-body .qr{display:none}}
 
+.cmp.say{min-width:0}
+.cmp.say td,.cmp.say th{padding:8px 10px}
+.cmp.say td:first-child{width:36%}
+.grid.g2.comp{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+@media (max-width:620px){.grid.g2.comp{grid-template-columns:1fr}}
+.cmp.say td:first-child{white-space:normal;font-weight:400;color:var(--muted)}
+.cmp.say td:last-child{font-weight:700;color:var(--pine)}
+
 /* speaker */
 .speaker{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,52px);align-items:center}
 @media (max-width:760px){.speaker{grid-template-columns:1fr}}
@@ -544,7 +552,7 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
    <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
    <a role="listitem" style="grid-column:span 15" data-go="22"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
    <a role="listitem" style="grid-column:span 25" data-go="37"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
-   <a role="listitem" style="grid-column:span 10" data-go="62"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="63"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
   </div>
   <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
  </div>
@@ -1719,6 +1727,36 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   </div>
  </div>
 </section>
+
+<!-- Companionship -->
+<section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="陪伴比要求更重要">
+ <div class="inner">
+  <div class="eyebrow">COMPANIONSHIP · 溝通的關鍵</div>
+  <h2>陪伴，比要求更有力</h2>
+  <p class="lead">常常你說 A，他偏往 B 走。與其要求他「去做」，不如先建立關係，再陪著他「一起做」。</p>
+  <div class="grid g2 comp" style="align-items:start">
+   <div class="grid" style="gap:10px">
+    <div class="card"><span class="tag">先關係，後任務</span><p class="small">先聊他在意的事、順著他的節奏。他往 B 走，就先陪他走一段，再慢慢帶回來。關係穩了，配合度自然提高。</p></div>
+    <div class="card"><span class="tag">以身作則，一起做</span><p class="small">你先做、他跟著做，不用下指令。被陪伴的人感覺被尊重，不是被管。</p></div>
+    <div class="card"><span class="tag">給選擇，留角色</span><p class="small">「穿藍色還是灰色？」比「快去換衣服」好。讓他還是一家之主，可以做決定。</p></div>
+   </div>
+   <div class="card">
+    <span class="tag am">換個說法試試看</span>
+    <div class="cmp-wrap" style="border:0"><table class="cmp say">
+     <thead><tr><th>要求他</th><th>陪著他</th></tr></thead>
+     <tbody>
+      <tr><td>「你去洗澡。」</td><td>「我們先去泡個腳，水溫你幫我試試。」</td></tr>
+      <tr><td>「你要多運動。」</td><td>「陪我去公園走一圈，順便買報紙。」</td></tr>
+      <tr><td>「藥吃了沒？」</td><td>「我們一起吃飯，飯後一起吃藥。」</td></tr>
+      <tr><td>「不要一直坐著。」</td><td>「爸，這台收音機壞了，你幫我看看？」</td></tr>
+     </tbody>
+    </table></div>
+   </div>
+  </div>
+  <p class="note">陪伴不只是照顧他，也是把時間留給自己。一起散步、一起修東西、一起看老照片，這些片段，最後都會成為你們之間最珍貴的回憶。</p>
+ </div>
+</section>
+
 
 <!-- 20 Home environment -->
 <section class="slide" data-sec="失智、失能的生活化解法" data-end="50" data-title="輔具與居家環境">
