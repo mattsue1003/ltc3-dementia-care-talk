@@ -381,9 +381,14 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 /* research ranking */
 .rank{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:900px){.rank{grid-template-columns:1fr}}
-.rk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.rk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 14px}
+.rk.top5{border-color:var(--pine)}
+.rk:not(.top5) .no{background:var(--pine-soft);color:var(--pine)}
+.rank{grid-auto-flow:column;grid-template-rows:repeat(5,auto)}
+@media (max-width:900px){.rank{grid-auto-flow:row;grid-template-rows:none}}
+@media (max-width:900px){.slide .grid.g4[style]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 .rk .no{width:2em;height:2em;border-radius:50%;display:grid;place-items:center;background:var(--pine);color:var(--surface);font-family:var(--f-data);font-weight:600}
-.rk-main{display:grid;gap:4px;min-width:0}
+.rk-main{display:grid;gap:2px;min-width:0}
 .rk-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .rk-head .pct{color:var(--pine);font-weight:600;white-space:nowrap}
 .rk-bar{height:8px;border-radius:4px;background:var(--pine-soft)}
@@ -501,9 +506,9 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   <h2>今天的 60 分鐘</h2>
   <div class="tl" role="list">
    <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
-   <a role="listitem" style="grid-column:span 15" data-go="19"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
-   <a role="listitem" style="grid-column:span 25" data-go="29"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
-   <a role="listitem" style="grid-column:span 10" data-go="51"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+   <a role="listitem" style="grid-column:span 15" data-go="20"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
+   <a role="listitem" style="grid-column:span 25" data-go="30"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="52"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
   </div>
   <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
  </div>
@@ -662,19 +667,40 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
 </section>
 
 <!-- Q3d research -->
-<section class="slide" data-sec="暖身問答" data-end="10" data-title="研究：長壽的前 5 大因素">
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="研究：長壽的前 10 大因素">
  <div class="inner">
   <div class="eyebrow">Q3 延伸 · 研究怎麼說</div>
-  <h2>影響壽命最大的 5 個因素，長壽國家都控制得最好</h2>
-  <p class="small">全球疾病負擔研究 GBD 2021（《刺胳針》The Lancet，2024）：分析 204 個國家、88 項危險因子，依「造成多少健康生命年損失」排序。以下為影響成人的前 5 名。</p>
+  <h2>影響長者健康最大的 10 個因素</h2>
+  <p class="small">GBD 2021 全球疾病負擔研究（《刺胳針》The Lancet，2024）：204 國、88 項危險因子中，<b>70 歲以上</b>健康生命年損失最多的前 10 名。長壽國家，正是把這些控制得最好的國家。</p>
   <div class="rank" role="list">
-   <div class="rk" role="listitem"><span class="no">1</span><div class="rk-main"><div class="rk-head"><b>空氣污染（細懸浮微粒）</b><span class="pct num">8.0%</span></div><div class="rk-bar"><i style="width:100%"></i></div><p class="small">長壽國家：空氣品質管制嚴格；個人可做的是看空品指數、減少燒香與油煙。</p></div></div>
-   <div class="rk" role="listitem"><span class="no">2</span><div class="rk-main"><div class="rk-head"><b>高血壓</b><span class="pct num">7.8%</span></div><div class="rk-bar"><i style="width:97.5%"></i></div><p class="small">日本長壽的最大功臣：全國減鹽運動讓血壓下降，中風死亡大幅減少。</p></div></div>
-   <div class="rk" role="listitem"><span class="no">3</span><div class="rk-main"><div class="rk-head"><b>吸菸</b><span class="pct num">5.7%</span></div><div class="rk-bar"><i style="width:71.3%"></i></div><p class="small">新加坡、北歐：高菸稅、公共場所全面禁菸，吸菸率持續下降。</p></div></div>
-   <div class="rk" role="listitem"><span class="no">4</span><div class="rk-main"><div class="rk-head"><b>高血糖</b><span class="pct num">5.4%</span></div><div class="rk-bar"><i style="width:67.5%"></i></div><p class="small">南韓、日本：國家定期健檢，及早發現糖尿病前期並介入。</p></div></div>
-   <div class="rk" role="listitem"><span class="no">5</span><div class="rk-main"><div class="rk-head"><b>肥胖（BMI 過高）</b><span class="pct num">約 4.5%</span></div><div class="rk-bar"><i style="width:56.3%"></i></div><p class="small">日本、南韓的肥胖率全球最低之一：魚、蔬菜多，紅肉少，份量小。</p></div></div>
+   <div class="rk top5" role="listitem"><span class="no">1</span><div class="rk-main"><b>高血壓</b><span class="small">日本全國減鹽，中風死亡大降</span></div></div>
+   <div class="rk top5" role="listitem"><span class="no">2</span><div class="rk-main"><b>高血糖</b><span class="small">日韓國家健檢，及早發現</span></div></div>
+   <div class="rk top5" role="listitem"><span class="no">3</span><div class="rk-main"><b>吸菸</b><span class="small">高菸稅、全面禁菸；戒菸永不嫌晚</span></div></div>
+   <div class="rk top5" role="listitem"><span class="no">4</span><div class="rk-main"><b>空氣污染（細懸浮微粒）</b><span class="small">空品差改在室內運動</span></div></div>
+   <div class="rk top5" role="listitem"><span class="no">5</span><div class="rk-main"><b>肥胖（BMI 過高）</b><span class="small">日韓肥胖率全球最低之一</span></div></div>
+   <div class="rk" role="listitem"><span class="no">6</span><div class="rk-main"><b>腎功能不佳</b><span class="small">控三高，不亂吃止痛藥</span></div></div>
+   <div class="rk" role="listitem"><span class="no">7</span><div class="rk-main"><b>壞膽固醇過高</b><span class="small">40 歲起定期驗血脂</span></div></div>
+   <div class="rk" role="listitem"><span class="no">8</span><div class="rk-main"><b>室內燃燒燃料</b><span class="small">燒香、炭火烹調要通風</span></div></div>
+   <div class="rk" role="listitem"><span class="no">9</span><div class="rk-main"><b>高鈉（太鹹）飲食</b><span class="small">每天鹽 5 公克以下</span></div></div>
+   <div class="rk" role="listitem"><span class="no">10</span><div class="rk-main"><b>骨骼中的鉛</b><span class="small">避開含鉛老水管、來路不明偏方</span></div></div>
   </div>
-  <div class="note"><b>對男性特別重要：</b>哈佛大學追蹤 12 萬人的研究（Circulation，2018）發現，50 歲時做到「不吸菸、體重正常、每天運動 30 分鐘、飲食健康、少量飲酒」五項，男性平均多活 <b>12.2 年</b>，女性多活 14 年。</div>
+ </div>
+</section>
+
+<!-- Q3e Harvard -->
+<section class="slide" data-sec="暖身問答" data-end="10" data-title="五個習慣多活 12 年">
+ <div class="inner">
+  <div class="eyebrow">Q3 延伸 · 給男性的好消息</div>
+  <h2>做到五件事，男性平均多活 <span class="hl">12.2 年</span></h2>
+  <p class="lead">哈佛大學追蹤約 12 萬人、長達 30 年以上（Circulation，2018）：50 歲時五項都做到的人，比一項都沒做到的人，男性多活 12.2 年、女性多活 14 年。</p>
+  <div class="grid g4" style="grid-template-columns:repeat(5,minmax(0,1fr))">
+   <div class="card"><span class="tag">1</span><h3>不吸菸</h3></div>
+   <div class="card"><span class="tag">2</span><h3>體重正常</h3><p class="small">BMI 18.5–24.9</p></div>
+   <div class="card"><span class="tag">3</span><h3>每天運動 30 分鐘</h3><p class="small">中等以上強度</p></div>
+   <div class="card"><span class="tag">4</span><h3>飲食健康</h3><p class="small">蔬果、全穀、魚</p></div>
+   <div class="card"><span class="tag am">5</span><h3>少量飲酒</h3><p class="small">不喝更好，喝也要少</p></div>
+  </div>
+  <p class="small">這五項正好對應前一頁的高血壓、高血糖、吸菸、肥胖、膽固醇。</p>
  </div>
 </section>
 
@@ -765,15 +791,19 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
 </section>
 
 <!-- 4 Numbers -->
-<section class="slide" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="四個數字看懂照護壓力">
+<section class="slide" data-sec="開場：照護是一場馬拉松" data-end="10" data-title="八個數字看懂照護壓力">
  <div class="inner">
   <div class="eyebrow">BY THE NUMBERS</div>
-  <h2>四個數字，看懂這場賽道</h2>
+  <h2>八個數字，看懂這場賽道</h2>
   <div class="grid g4">
-   <div class="card stat"><span class="v">20<small>%+</small></span><h3>超高齡社會</h3><p class="small">2025 年起，臺灣每 5 人就有 1 位 65 歲以上長者。</p></div>
-   <div class="card stat"><span class="v">7.3<small>年</small></span><h3>一生的長照需求</h3><p class="small">國人一生中平均需要被照顧的時間。不是幾個月的事。</p></div>
-   <div class="card stat am"><span class="v">1/12</span><h3>失智盛行率 7.99%</h3><p class="small">65 歲以上長者，約每 12 位就有 1 位失智（2023 全國調查）。</p></div>
-   <div class="card stat am"><span class="v">13<small>萬+</small></span><h3>每年因照顧離職</h3><p class="small">許多人在職涯高峰期，因為家人照顧需求而離開職場。</p></div>
+   <div class="card stat"><span class="v">20<small>%+</small></span><h3>超高齡社會</h3><p class="small">2025 年起，每 5 人就有 1 位 65 歲以上長者。</p></div>
+   <div class="card stat"><span class="v">7.3<small>年</small></span><h3>一生的長照需求</h3><p class="small">國人一生中平均需要被照顧的時間。</p></div>
+   <div class="card stat am"><span class="v">1/12</span><h3>失智盛行率 7.99%</h3><p class="small">65 歲以上約每 12 位有 1 位（2023 全國調查）。</p></div>
+   <div class="card stat am"><span class="v">13<small>萬+</small></span><h3>每年因照顧離職</h3><p class="small">許多人在職涯高峰期離開職場。</p></div>
+   <div class="card stat"><span class="v">92<small>萬</small></span><h3>全國失能人口</h3><p class="small">2026 年推估 92.3 萬人，2035 年將達 129.6 萬。65 歲以上約每 6 位就有 1 位失能。</p></div>
+   <div class="card stat"><span class="v">4<small>% ＋ 19%</small></span><h3>衰弱＋衰弱前期</h3><p class="small">65 歲以上 4.1% 已衰弱、19% 在衰弱前期（衛福部 2022）。衰弱可以逆轉。</p></div>
+   <div class="card stat am"><span class="v">5.1<small>%</small></span><h3>身心障礙者</h3><p class="small">約 120 萬人，每 20 人有 1 位；其中 45% 是 65 歲以上。</p></div>
+   <div class="card stat"><span class="v">75.7<small>萬</small></span><h3>長照服務使用人數</h3><p class="small">2024 年使用長照的人數，涵蓋率 84.9%；使用者中近一半具身障資格。</p></div>
   </div>
   <p class="note">對企業而言，這是人才留任問題；對個人而言，這是家庭財務問題。及早規劃，兩邊都能少損失。</p>
  </div>
@@ -788,7 +818,7 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
    <div class="rrow"><div class="lab">居家服務<em>用長照補助＋部分負擔</em></div><div class="track"><div class="r" style="left:3.33%;width:6.67%"><span>0.2–0.6 萬</span></div></div></div>
    <div class="rrow"><div class="lab">日間照顧<em>含餐費、交通自付</em></div><div class="track"><div class="r" style="left:8.33%;width:11.67%"><span>0.5–1.2 萬</span></div></div></div>
    <div class="rrow"><div class="lab">外籍看護<em>薪資＋就安費、健保、仲介</em></div><div class="track"><div class="r am" style="left:43.33%;width:10%"><span>2.6–3.2 萬</span></div></div></div>
-   <div class="rrow"><div class="lab">住宿型機構<em>補助前；最高可補 12 萬/年</em></div><div class="track"><div class="r am flip" style="left:58.33%;width:41.67%"><span>3.5–6 萬</span></div></div></div>
+   <div class="rrow"><div class="lab">住宿型機構<em>補助前；2026 年起最高補 18 萬/年</em></div><div class="track"><div class="r am flip" style="left:58.33%;width:41.67%"><span>3.5–6 萬</span></div></div></div>
    <div class="axis"><span></span><div><span>0</span><span>1萬</span><span>2萬</span><span>3萬</span><span>4萬</span><span>5萬</span><span>6萬</span></div></div>
   </div>
   <p class="small">數字為常見區間的示意，實際依失能程度、身分別、機構與地區而不同。重點是：<b class="hl">先用足政府資源，再決定自費的部分。</b></p>
@@ -962,7 +992,7 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
      <tr><td>輔具補助</td><td>每個品項有自己的上限；低收 100%、中低收 75%、一般戶 50%</td><td>3 年總額 4 萬（或第 2 組 6 萬）；低收 100%、中低收 90%、一般戶 70%</td></tr>
      <tr><td>照顧服務</td><td>個人助理、身障日間照顧、臨時及短期照顧</td><td>居家服務、日照、居家復能、喘息</td></tr>
      <tr><td>交通</td><td>復康巴士</td><td>長照交通接送</td></tr>
-     <tr><td>經濟支持</td><td>生活補助、稅捐減免、停車位識別證、愛心卡</td><td>住宿機構補助（最高 12 萬／年）</td></tr>
+     <tr><td>經濟支持</td><td>生活補助、稅捐減免、停車位識別證、愛心卡</td><td>住宿機構補助（2026 年起最高 18 萬／年，長照 4 級以上或中度以上身障）</td></tr>
     </tbody>
    </table>
   </div>
@@ -982,7 +1012,7 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   <div class="grid g3">
    <div class="card"><span class="tag">居家</span><h3>長輩在自己家</h3><ul class="clean small"><li>居家服務：沐浴、備餐、陪同</li><li>居家復能：治療師到府教功能訓練</li><li>居家護理、居家醫療</li></ul></div>
    <div class="card"><span class="tag">社區</span><h3>白天出門，晚上回家</h3><ul class="clean small"><li>日間照顧中心、小規模多機能</li><li>家庭托顧</li><li>巷弄長照站、失智據點</li></ul></div>
-   <div class="card"><span class="tag am">住宿</span><h3>需要 24 小時照顧</h3><ul class="clean small"><li>長照住宿機構、護理之家</li><li>失智團體家屋</li><li>住宿補助最高 12 萬元/年</li></ul></div>
+   <div class="card"><span class="tag am">住宿</span><h3>需要 24 小時照顧</h3><ul class="clean small"><li>長照住宿機構、護理之家</li><li>失智團體家屋</li><li>住宿補助 2026 年起最高 18 萬元/年（每月 1.5 萬）</li></ul></div>
   </div>
   <div class="grid g3">
    <div class="note"><b>雙薪上班族：</b>日照 ＋ 交通接送 ＋ 週末喘息</div>
