@@ -298,6 +298,11 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .cmp.days td:last-child{background:transparent}
 .cmp.days tr.sum td{font-weight:700;color:var(--pine);border-bottom:0}
 
+.sd-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.sd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.sd-grid{grid-template-columns:1fr}}
+.card.sd{gap:6px;border-top:4px solid var(--brand)}
+
 /* speaker */
 .speaker{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,52px);align-items:center}
 @media (max-width:760px){.speaker{grid-template-columns:1fr}}
@@ -568,8 +573,8 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   <div class="tl" role="list">
    <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
    <a role="listitem" style="grid-column:span 15" data-go="22"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
-   <a role="listitem" style="grid-column:span 25" data-go="38"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
-   <a role="listitem" style="grid-column:span 10" data-go="64"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+   <a role="listitem" style="grid-column:span 25" data-go="39"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="65"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
   </div>
   <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
  </div>
@@ -1116,6 +1121,27 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
    </div>
   </div>
   <p class="small">資料來源：衛福部《長期照顧十年計畫 3.0（115–124 年）核定本》、衛福部 2026 年住宿補助公告。</p>
+ </div>
+</section>
+
+<!-- Smart devices catalogue -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="智慧輔具全租賃 5 大類">
+ <div class="inner">
+  <div class="eyebrow">長照 3.0 · 智慧科技輔具全租賃（2026/7/1 起）</div>
+  <h2>3 年 6 萬元，可以租哪些智慧輔具？</h2>
+  <div class="sd-grid">
+   <div class="card sd"><span class="tag">移動</span><b>外骨骼、動力髖關節、電動輪椅</b><span class="small">幫助走路或代步；參考售價約 10–150 萬元</span></div>
+   <div class="card sd"><span class="tag">移位</span><b>智慧移位設備</b><span class="small">首批 17 件中<b>尚無</b>產品，後續審議上架</span></div>
+   <div class="card sd"><span class="tag">沐浴排泄</span><b>全自動排泄處理機</b><span class="small">自動清潔，減少夜間換尿布；參考售價約 25 萬元</span></div>
+   <div class="card sd"><span class="tag">居家照顧床</span><b>智慧床墊、感知氣墊、翻身輔助器</b><span class="small">偵測離床、翻身提醒、預防壓瘡；參考售價約 2.5–7 萬元</span></div>
+   <div class="card sd"><span class="tag am">安全看視</span><b>定位鞋墊、零接觸偵測、智慧坐墊</b><span class="small">走失、跌倒、離床即時通知家人手機；鞋墊約 4 千元</span></div>
+  </div>
+  <div class="grid g3">
+   <div class="note"><b>只能租、不能買：</b>特約廠商負責送貨、安裝教學、維修、清消與回收；需求變了可以換。</div>
+   <div class="note"><b>售價不是租金：</b>上面是原廠建議售價。月租由廠商訂定、報縣市備查，簽約前先問清楚每月扣多少額度。</div>
+   <div class="note"><b>怎麼申請：</b>1966 評估長照 2 級以上 → 輔具評估人員出具報告 → 選第 2 組（3 年內不能換組）→ 找特約廠商租。</div>
+  </div>
+  <p class="small">首批 17 件含移動 3、沐浴排泄 1、居家照顧床與安全看視共 13 件。資料來源：衛福部公告、Care喵整理；品項與價格以 1966 及特約廠商為準。</p>
  </div>
 </section>
 
