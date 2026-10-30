@@ -20,13 +20,13 @@
   --f-display:"Chiron GoRound TC","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
   --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   --f-data:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --bar-h:64px;
+  --bar-h:48px;
 
 }
 /* type scale follows a 1280×720 projection canvas: 1 --px = 1 canvas pixel; --k shrinks dense slides */
 :root,.slide{
   --k:1;
-  --px:calc(min(calc(100vw / 1280), calc((100vh - 64px) / 720)) * var(--k));
+  --px:calc(min(calc(100vw / 1280), calc((100vh - 48px) / 720)) * var(--k));
   --fs-hero:max(2rem, calc(66 * var(--px)));
   --fs-h:max(1.6rem, calc(52 * var(--px)));
   --fs-h3:max(1.1rem, calc(30 * var(--px)));
@@ -214,14 +214,14 @@ details p{padding:0 0 .9em;color:var(--muted)}
   height:var(--bar-h);padding-bottom:env(safe-area-inset-bottom,0px);
   padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px));
   display:flex;align-items:center;gap:8px;box-sizing:content-box}
-.bar .nav{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
+.bar .nav{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
 .bar .nav.next{background:var(--pine);border-color:var(--pine);color:var(--bg)}
 .bar .nav:disabled{opacity:.35;cursor:default}
-.bar .mid{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border:0;background:transparent;height:48px;border-radius:10px}
+.bar .mid{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border:0;background:transparent;height:40px;border-radius:8px;gap:1px}
 .bar .mid:hover{background:var(--bg)}
-.bar .sec{font-size:var(--fs-small);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.bar .cnt{font-family:var(--f-data);font-size:.78rem;color:var(--muted)}
-.bar .tool{height:44px;border-radius:10px;border:1.5px solid var(--line);background:transparent;cursor:pointer;padding:0 .7em;display:flex;align-items:center;gap:.4em;font-family:var(--f-data);font-size:.85rem;flex:0 0 auto}
+.bar .sec{font-size:14px;line-height:1.2;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.bar .cnt{font-family:var(--f-data);font-size:11px;line-height:1.2;color:var(--muted)}
+.bar .tool{height:36px;border-radius:10px;border:1.5px solid var(--line);background:transparent;cursor:pointer;padding:0 .7em;display:flex;align-items:center;gap:.4em;font-family:var(--f-data);font-size:.85rem;flex:0 0 auto}
 .bar .tool.late{border-color:var(--amber);color:var(--amber)}
 @media (max-width:620px){.bar .hide-m{display:none}}
 svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
@@ -286,6 +286,12 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2;stro
 .axis .legend i{display:inline-block;width:22px;height:12px;border-radius:3px}
 .lg-solid{background:var(--pine)}
 .lg-ghost{border:2px dashed var(--muted);opacity:.7}
+
+.cmp.elig td,.cmp.elig th{padding:9px 14px}
+.cmp.elig td:first-child{white-space:normal}
+.cmp.elig td:nth-child(2){color:var(--muted)}
+.cmp.elig tr.new td{background:var(--pine-soft)}
+.cmp.elig tr.new td:first-child{font-weight:700;color:var(--pine)}
 
 /* speaker */
 .speaker{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,52px);align-items:center}
@@ -557,8 +563,8 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
   <div class="tl" role="list">
    <a role="listitem" style="grid-column:span 10" data-go="4"><span class="t">00–10 min</span><span class="bar"></span><h3>開場：照護是一場馬拉松</h3><span class="small">家庭面臨的照護成本與挑戰</span></a>
    <a role="listitem" style="grid-column:span 15" data-go="22"><span class="t">10–25 min</span><span class="bar"></span><h3>長照 3.0 戰略地圖</h3><span class="small">居家、社區、住宿資源的最佳組合</span></a>
-   <a role="listitem" style="grid-column:span 25" data-go="37"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
-   <a role="listitem" style="grid-column:span 10" data-go="63"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
+   <a role="listitem" style="grid-column:span 25" data-go="38"><span class="t">25–50 min</span><span class="bar"></span><h3>失智症、失能的「生活化」解法</h3><span class="small">辨識徵兆、藥物與非藥物介入、輔具與居家環境</span></a>
+   <a role="listitem" style="grid-column:span 10" data-go="64"><span class="t">50–60 min</span><span class="bar"></span><h3>Q&amp;A 實務諮詢</h3><span class="small">帶著你家的狀況來問</span></a>
   </div>
   <p class="small">色塊寬度等於時間長度。點任一段可直接跳過去。</p>
  </div>
@@ -986,6 +992,33 @@ svg.lc{display:block;width:100%;min-width:520px;height:auto}
    </table>
   </div>
   <p class="small">3.0 各項給付細則以衛福部及各縣市公告為準；本講座金額依現行給付標準說明。</p>
+ </div>
+</section>
+
+<!-- Eligibility 2.0 vs 3.0 -->
+<section class="slide" data-sec="長照 3.0 戰略地圖" data-end="25" data-title="誰符合資格：2.0 與 3.0">
+ <div class="inner">
+  <div class="eyebrow">ELIGIBILITY · 誰可以用長照？</div>
+  <h2>誰符合資格？3.0 把門開得更大</h2>
+  <div class="cmp-wrap">
+   <table class="cmp elig">
+    <thead><tr><th>服務對象</th><th>長照 2.0</th><th>長照 3.0</th></tr></thead>
+    <tbody>
+     <tr><td>65 歲以上失能長者</td><td>✓</td><td>✓</td></tr>
+     <tr><td>失能身心障礙者</td><td>✓ 不限年齡</td><td>✓ 不限年齡</td></tr>
+     <tr><td>失能原住民</td><td>✓ 55 歲以上</td><td>✓ 55 歲以上</td></tr>
+     <tr><td>日常生活需協助的獨居長者、衰弱長者</td><td>✓ 預防延緩失能</td><td>✓ 預防延緩失能</td></tr>
+     <tr class="new"><td>失智症者</td><td>50 歲以上</td><td><b>全年齡</b>：年輕型失智也能用</td></tr>
+     <tr class="new"><td>急性後期照護（PAC）個案</td><td>—</td><td><b>新增，不分年齡</b>：如中風、脆弱性骨折術後，出院銜接長照</td></tr>
+     <tr class="new"><td>特定居留資格的外國專業人才及眷屬</td><td>—</td><td><b>新增</b></td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="grid g2">
+   <div class="note"><b>門檻不變：</b>撥 1966 由照管專員評估，長照需要等級 <b>2–8 級</b>才能使用四包錢給付。</div>
+   <div class="note"><b>還沒失能也有資源：</b>衰弱、輕度退化的長輩，可參加社區據點的預防及延緩失能課程。</div>
+  </div>
+  <p class="small">資料來源：衛福部《長期照顧十年計畫 3.0（115–124 年）核定本》。</p>
  </div>
 </section>
 
